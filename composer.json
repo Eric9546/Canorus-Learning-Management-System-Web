@@ -1,0 +1,8 @@
+{
+    "require": {
+        "kreait/firebase-php": "*",
+        "google/cloud-storage": "^1.26",
+        "morrislaptop/firestore-php": "^2.2",
+        "ahsankhatri/firestore-php": "^2.0"
+    }
+}
