@@ -28,7 +28,7 @@
     $snapshot = $reference->getSnapshot();
     $value = $snapshot->getValue();
 
-    if ($value ['access_level'] !== "Teaching" && $value ['access_level'] !== "Admin")
+    if ($value ['access_level'] !== "Student")
     {
      
         alert ("You Do Not Have Access!");
@@ -40,7 +40,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Edit/Remove Subject</title>
+    <title>View Notes</title>
     <?php include('header.php'); ?>
     
   </head>
@@ -70,7 +70,7 @@
           
         <div class="main-nav d-none d-lg-block">
             <nav class="site-navigation text-right text-md-center" role="navigation">
-                <?php include('admin_nav.php'); ?>
+                <?php include('student_nav.php'); ?>
             </nav>
           </div>
 
@@ -92,77 +92,57 @@
       </div>
     </div>
     
-    <?php
-
-    $program = $_POST ['program'];
-
-    $path = 'Subject/';
-    $reference = $database->getReference($path);
-    $snapshot = $reference->getSnapshot();
-
-   ?>
-
-   <div class="site-section">
+    <div class="site-section">
       <div class="container">
         <div class="row">
           <div class="title-section text-center mb-5 col-12">
-            <h2 class="text-uppercase">View Subject</h2>
+            <h2 class="text-uppercase">View Notes</h2>
           </div>
         </div>
+        
+          <?php
 
-          <div class="form-group row">
+            if (isset ($_POST ['subId']))
+            {
+        
+                $subId = $_POST ['subId'];
+                $contentName = $_POST ['contentName'];
+        
+            }
 
-                <form action="view_subject_filtered.php" method="post">
-
-                    <div class="col-md-12">
-                
-                        <label for="text" class="text-black">Search Subject ID<span class="text-danger"></span></label>
-                        <input type="text" class="form-control" id="search" name="search" placeholder="Enter Subject ID">
-                        <br />
-
-                        <input type="hidden" name="program" value="<?php echo $program; ?>" />                        
-                        <input type="submit" class="btn btn-primary btn-lg btn-block" value="Search">
-
-                    </div>
+            else
+            {
+        
+                $subId = $_SESSION ['subId'];
+                $contentName = $_SESSION ['contentName'];
+        
+            }
             
-                </form>
+           ?>
 
-            </div>     
+          <div class="col-md-12">
+                
+              <?php
 
-        <div class="row mb-5">
-          <div class="col-md-16">
-            <div class="site-blocks-table">
+                $path = 'Note/' . $subId . "/" . $contentName;
+                $reference = $database->getReference($path);
+                $snapshot = $reference->getSnapshot();
+
+               ?>
+
+              <div class="site-blocks-table">
               <table class="table table-bordered">
                 <thead>
                   <tr>
-                    <th>Subject ID</th>
-                    <th>Subject Name</th>
-                    <th>Program</th>
-                    <th>Fee</th>                  
-                    <th>Lecturer ID</th>
-                    <th>Sections</th>
-                    <th>Edit</th>
-                    <th>Remove</th>
+                    <th>File Title</th>
+                    <th>File Description</th>
+                    <th>View</th>                    
                   </tr>
                 </thead>
                 <tbody>
 
-                     <?php
-
-                        if (isset ($_POST['search'])) 
-                        {
-
-                            $search =  $_POST['search'];
-
-                        }
-
-                        else
-                        {
-                    
-                            $search = "";
-
-                        }
-
+                    <?php                        
+                        
                         if (!$snapshot->exists())
                         {
                                               
@@ -170,61 +150,27 @@
 
                         else
                         {
-
+                         
                             $reference = $database->getReference($path)->getValue();
                     
                             foreach ($reference as $key => $rows)
                             {
-
-                            if ($rows ['program'] == $program)
-                            {
-
-                            if (str_contains($rows ['subId'], strtoupper($search)))
+                    
+                            if ($key != "contentName")
                             {
                               
                     ?>
 
                   <tr>
-                    <td><?php echo $rows ['subId']; ?></td>
-                    <td><?php echo $rows ['subName']; ?></td>
-                    <td><?php echo $rows ['program']; ?></td>
-                    <td>RM <?php echo $rows ['fee']; ?></td>                  
-                    <td><?php echo $rows ['lecId']; ?></td>
-                    <td><?php echo $rows ['section']; ?></td>
+                    <td><?php echo $rows ['fileTitle']; ?></td> 
+                    <td><?php echo $rows ['fileDesc']; ?></td> 
+                    
+                    <td>
+                     
+                        <a href="<?php echo 'https://storage.googleapis.com/canorus-18990.appspot.com/' . $rows ['fileName']; ?>" target="_blank" class="btn btn-primary btn-lg btn-block">View</></a>
+
+                    </td>
                    
-                    <td>
-
-                        <?php
-
-                            $record_to_edit = $rows ['subId'];
-                           
-                        ?>
-
-                        <form action="edit_subject.php" method="post">
-
-                            <input type="hidden" name="record_to_edit" value="<?php echo $record_to_edit; ?>" />                           
-                            <input type="submit" name="edit" value="Edit" class="btn btn-primary btn-lg btn-block"/>
-
-                        </form>
-
-                    </td>
-
-                    <td>
-
-                        <?php
-
-                            $record_to_remove = $rows ['subId'];
-                           
-                        ?>
-
-                        <form action="remove_subject.php" method="post">
-
-                            <input type="hidden" name="record_to_remove" value="<?php echo $record_to_remove; ?>" />                           
-                            <input type="submit" name="delete" value="Remove" class="btn btn-primary btn-lg btn-block"/>
-
-                        </form>
-
-                    </td>
                   </tr>
 
                     <?php
@@ -234,31 +180,27 @@
                     ?> 
 
                     <?php
+                                 
+                        }
+
+                    ?>   
+                    
+                    <?php         
 
                         }
-                      
-                    ?>
 
-                    <?php
+                    ?>  
 
-                        }
-                      
-                    ?>
-
-                    <?php
-
-                        }
-                      
-                    ?>
-
-                </tbody>
+                </tbody>            
               </table>
-            </div>
-          </div>
+               </div>
+
+
         </div>
 
       </div>
     </div>
+   
 
     <footer class="site-footer custom-border-top">
         <div class="container">

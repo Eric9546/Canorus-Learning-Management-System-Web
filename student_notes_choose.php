@@ -1,6 +1,7 @@
 <?php
     
     session_start ();
+
     if (!isset ($_SESSION ['id']))
     {
         
@@ -21,16 +22,16 @@
 
     $id = $_SESSION ['id'];
 
-    // Redirect the user if other ID is detected //
+    // Ensure that only student can access//
     $path = 'Registration/' . $id;
     $reference = $database->getReference($path);
     $snapshot = $reference->getSnapshot();
     $value = $snapshot->getValue();
 
-    if ($value ['access_level'] !== "Lecturer")
+    if ($value ['access_level'] !== "Student")
     {
-        
-        header ("Location:index.php");
+     
+        alert ("You Do Not Have Access!");
 
     }
 
@@ -39,7 +40,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Home Page</title>
+    <title>View Notes</title>
     <?php include('header.php'); ?>
     
   </head>
@@ -63,10 +64,16 @@
         <div class="d-flex align-items-center justify-content-between">
           <div class="logo">
             <div class="site-logo">
-              <a href="index.php" class="js-logo-clone">Canorus</a>
+              <a href="student_panel.php" class="js-logo-clone">Canorus</a>
             </div>
           </div>
           
+        <div class="main-nav d-none d-lg-block">
+            <nav class="site-navigation text-right text-md-center" role="navigation">
+                <?php include('student_nav.php'); ?>
+            </nav>
+          </div>
+
           <div class="icons">
  
              <span class="icon-user">
@@ -88,41 +95,66 @@
     <div class="site-section">
       <div class="container">
         <div class="row">
-          <div class="title-section text-center mb-5 col-12">
-            <h2 class="text-uppercase">Welcome To The Canorus Learning Management System!</h2>
+          <div class="col-md-12">
+            <h2 class="h3 mb-3 text-black">View Notes</h2>
           </div>
+          <div class="col-md-7">
+
+            <form action="student_notes_filtered.php" method="post">
+              
+              <div class="p-3 p-lg-5 border">
+                <div class="form-group row">
+                  
+                  <div class="col-md-6">
+
+                      <?php
+
+                            $path = 'Enrolment/' . $id;
+                            $reference = $database->getReference($path)->getValue();
+
+                        ?>
+
+                    <label for="c_email" class="text-black">Subject <span class="text-danger">*</span></label>
+                      <br />
+                      <select name="subId" required>
+
+                        <?php
+
+                            foreach ($reference as $key => $rows)
+                            {
+                              
+                        ?>
+                    
+                            <option value="<?php echo $rows ['subId'] ?>"><?php echo $rows ['subId']; ?> - <?php echo $rows ['subName']; ?></option>
+                                    
+                        <?php
+           
+                            }
+
+                        ?> 
+
+                        </select>    
+                  </div>
+                </div>
+                
+                <div class="form-group row">
+                  <div class="col-lg-6">
+                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="View Notes">
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+            
+          <div class="col-md-5 ml-auto">
+
+            <div class="p-4 border mb-3">
+                      
+                <p><img src="images/function12.jpg" width="400" height="300"/></p>
+
+            </div>
+                    
         </div>
-        <div class="row">
-
-            <div class="col-lg-4 col-md-6 item-entry mb-4">
-            <a href="lecturer_timetable.php" class="product-item md-height bg-gray d-block" style="height:300px; width:300px">
-              <img src="images/function3.jpg" alt="Image" class="img-fluid" height="250" width="250">
-            </a>
-            <h5 class="item-price"><a href="lecturer_timetable.php"><span class="icon-asterisk"> View Timetable</span></a></h5>
-          </div>
-          
-            <div class="col-lg-4 col-md-6 item-entry mb-4">
-            <a href="view_notes.php" class="product-item md-height bg-gray d-block" style="height:300px; width:300px">
-              <img src="images/function12.jpg" alt="Image" class="img-fluid" height="250" width="250">
-            </a>
-            <h5 class="item-price"><a href="view_notes.php"><span class="icon-asterisk"> Edit/Remove Notes</span></a></h5>
-          </div>
-
-            <div class="col-lg-4 col-md-6 item-entry mb-4">
-            <a href="#" class="product-item md-height bg-gray d-block" style="height:300px; width:300px">
-              <img src="images/function13.png" alt="Image" class="img-fluid" height="250" width="250">
-            </a>            
-            <h5 class="item-price"><a href="view_assignment.php"><span class="icon-asterisk"> Edit/Remove Assignment</span></a></h5>
-            <h5 class="item-price"><a href="view_submission.php"><span class="icon-asterisk"> View Assignment Submissions</span></a></h5>
-          </div>
-
-            <div class="col-lg-4 col-md-6 item-entry mb-4">
-            <a href="student_announcements.php" class="product-item md-height bg-gray d-block" style="height:300px; width:300px">
-              <img src="images/function14.jpg" alt="Image" class="img-fluid" height="250" width="250">
-            </a>
-            <h5 class="item-price"><a href="#"><span class="icon-asterisk"> Edit/Remove Annoucements</span></a></h5>
-          </div>
-
         </div>
       </div>
     </div>
@@ -142,7 +174,7 @@
             </div>
         </div>
     </footer>
-
+   
   </div>
 
   <script src="js/jquery-3.3.1.min.js"></script>
@@ -154,6 +186,6 @@
   <script src="js/aos.js"></script>
 
   <script src="js/main.js"></script>
-
+    
   </body>
 </html>

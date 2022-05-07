@@ -32,7 +32,7 @@
     $_SESSION ['program'] = $program;
     $_SESSION ['session'] = $session;  
 
-    // Query to delele the record from the database table //
+    // Query to delete the record from the database table //
     $path = $record_to_remove;
     $reference = $database->getReference($path)->remove();
 

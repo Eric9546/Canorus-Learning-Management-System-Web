@@ -28,9 +28,9 @@
     $snapshot = $reference->getSnapshot();
     $value = $snapshot->getValue();
 
-    if ($value ['access_level'] !== "Teaching" && $value ['access_level'] !== "Admin")
+    if ($value ['access_level'] !== "Lecturer")
     {
-      
+     
         alert ("You Do Not Have Access!");
 
     }
@@ -40,7 +40,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Add Subject</title>
+    <title>View Notes</title>
     <?php include('header.php'); ?>
     
   </head>
@@ -70,7 +70,7 @@
           
         <div class="main-nav d-none d-lg-block">
             <nav class="site-navigation text-right text-md-center" role="navigation">
-                <?php include('admin_nav.php'); ?>
+                <?php include('lecturer_nav.php'); ?>
             </nav>
           </div>
 
@@ -96,117 +96,70 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <h2 class="h3 mb-3 text-black">Add Subject</h2>
+            <h2 class="h3 mb-3 text-black">View Notes</h2>
           </div>
           <div class="col-md-7">
 
-            <form action="add_subject_execute.php" method="post">
+            <form action="view_notes_filtered.php" method="post">
               
               <div class="p-3 p-lg-5 border">
                 <div class="form-group row">
-                  <div class="col-md-6">
-                    <label for="text" class="text-black">Subject ID <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="id" name="subId" placeholder="Subject ID" required>
-                  </div>
-                  <div class="col-md-6">
-                    <label for="text" class="text-black">Subject Name <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="pass" name="subName" placeholder="Subject Name" required>
-                  </div>
-                </div>
-                <div class="form-group row">
 
-                    <?php
+                     <?php
 
-                        $path = 'Program/';
+                        $path = 'Subject/';
                         $reference = $database->getReference($path)->getValue();
 
                     ?>
 
-                  <div class="col-md-6">
-                    <label for="c_email" class="text-black">Program <span class="text-danger">*</span></label>                  
+                  <div class="col-md-12">
+                    <label for="c_email" class="text-black">Subject <span class="text-danger">*</span></label>
                       <br />
-                    <select name="program" required>
+                          <select name="subId" required>
 
-                    <?php
+                            <?php
 
-                        foreach ($reference as $key => $rows)
-                        {
+                                foreach ($reference as $key => $rows)
+                                {
+
+                                if ($rows ['lecId'] == $id)
+                                {
                               
-                    ?>
+                            ?>
                     
-                        <option value="<?php echo $rows ['progCode'] ?>"><?php echo $rows ['progCode']; ?></option>
+                                <option value="<?php echo $rows ['subId'] ?>"><?php echo $rows ['subId']; ?> - <?php echo $rows ['subName']; ?></option>
                                     
-                    <?php
+                            <?php
            
-                        }
+                                }
 
-                    ?> 
+                            ?> 
 
-                    </select>
-                  </div>
+                            <?php
+           
+                                }
 
-                  <div class="col-md-6">
-                    <label for="text" class="text-black">Sections <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="id" name="section" placeholder="eg: CS1,CS2,CS3" required>
-                  </div>
-
-                </div>
-                <div class="form-group row">
-                  <div class="col-md-6">
-                    <label for="text" class="text-black">Subject Fee <span class="text-danger">*</span></label>
-                    <input type="number" class="form-control" min="0" id="pass" name="fee" placeholder="Subject Fee" required>
+                            ?>
+        
+                        </select>
                   </div>         
-
+                  
                 </div>
-            
-                <div class="form-group row">             
-
-                    <?php
-
-                        $path = 'Lecturer/';
-                        $reference = $database->getReference($path)->getValue();
-
-                    ?>
-
-                  <div class="col-md-6">
-                    <label for="c_email" class="text-black">Lecturer ID <span class="text-danger">*</span></label>
-                    <br />
-                    <select name="lecId" required>
-
-                    <?php
-
-                        foreach ($reference as $key => $rows)
-                        {
-                              
-                    ?>
-                    
-                        <option value="<?php echo $rows ['lecId'] ?>"><?php echo $rows ['lecId']; echo " ("; echo $rows ['name']; echo ")"; ?></option>
-                                    
-                    <?php
-           
-                        }
-
-                    ?> 
-
-                        <option value="N/A">N/A</option>
-
-                    </select>
-                   
-                  </div>
-                </div>
+                
                 <div class="form-group row">
                   <div class="col-lg-12">
-                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="Add Subject">
+                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="View Notes">
                   </div>
                 </div>
               </div>
             </form>
           </div>
+            
           <div class="col-md-5 ml-auto">
 
             <div class="p-4 border mb-3">
                       
-                <p><img src="images/function9.jpg" width="400" height="300"/></p>
+                <p><img src="images/function12.jpg" width="400" height="300"/></p>
 
             </div>
                     

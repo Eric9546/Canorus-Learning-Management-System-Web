@@ -135,7 +135,7 @@
 
                     ?>
 
-                  <div class="col-lg-12">
+                  <div class="col-lg-6">
                     <label for="c_email" class="text-black">Program <span class="text-danger">*</span></label>
                       <br />
                     <select name="program" required>
@@ -157,7 +157,14 @@
 
                     </select>
                   </div>
+
+                  <div class="col-md-6">
+                    <label for="text" class="text-black">Sections <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="id" name="section" placeholder="<?php echo $value ['section']; ?>" required>
+                  </div>
+
                 </div>
+                  
                 <div class="form-group row">
                   <div class="col-md-6">
                     <label for="text" class="text-black">Subject Fee <span class="text-danger"></span></label>

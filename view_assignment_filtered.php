@@ -21,7 +21,6 @@
     include ('dbcon.php');
 
     $id = $_SESSION ['id'];
-    $program = $_SESSION ['program'];
 
     // Ensure that only staff members can access //
     $path = 'Registration/' . $id;
@@ -29,7 +28,7 @@
     $snapshot = $reference->getSnapshot();
     $value = $snapshot->getValue();
 
-    if ($value ['access_level'] !== "Teaching" && $value ['access_level'] !== "Admin")
+    if ($value ['access_level'] !== "Lecturer")
     {
      
         alert ("You Do Not Have Access!");
@@ -41,7 +40,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>View Classes</title>
+    <title>View Assignment</title>
     <?php include('header.php'); ?>
     
   </head>
@@ -71,7 +70,7 @@
           
         <div class="main-nav d-none d-lg-block">
             <nav class="site-navigation text-right text-md-center" role="navigation">
-                <?php include('admin_nav.php'); ?>
+                <?php include('lecturer_nav.php'); ?>
             </nav>
           </div>
 
@@ -97,105 +96,110 @@
       <div class="container">
         <div class="row">
           <div class="title-section text-center mb-5 col-12">
-            <h2 class="text-uppercase">View Classes</h2>
+            <h2 class="text-uppercase">View Assignment</h2>
           </div>
         </div>
         
           <?php
 
-            if (isset ($_POST ['program']))
+            if (isset ($_POST ['subId']))
             {
         
-                $program = $_POST ['program'];               
+                $subId = $_POST ['subId'];
         
             }
 
             else
             {
         
-                $program = $_SESSION ['program'];
-               
-            }   
-
+                $subId = $_SESSION ['subId'];
+        
+            }
+   
            ?>
 
           <div class="col-md-12">
 
             <div class="form-group row">
                 <div class="col-md-6">
-                    <span class="d-block text-primary h6 text-uppercase">Current Program: </span>
-                    <p class="mb-0"><?php echo $program; ?></p>
+                    <span class="d-block text-primary h6 text-uppercase">Current Subject: </span>
+                    <p class="mb-0"><?php echo $subId; ?></p>
                 </div>
-                         
+                    
             </div>
 
             <div class="form-group row">
 
-                <form action="view_classes_filtered.php" method="post">
+                <form action="view_assignment_filtered.php" method="post">
 
                     <div class="col-md-12">
+                        
+                        <?php
 
-                         <?php
-
-                            $path = 'Program/';
+                            $path = 'Subject/';
                             $reference = $database->getReference($path)->getValue();
 
                         ?>
-                        
-                        <label for="c_email" class="d-block text-primary h6 text-uppercase">View Different Enrolment: </label>
+
+                        <label for="c_email" class="d-block text-primary h6 text-uppercase">View Different Subject</label>
                                       
                         <br />
-                        <select name="program" required>
+                        <select name="subId" required>
 
                             <?php
 
                                 foreach ($reference as $key => $rows)
                                 {
+
+                                if ($rows ['lecId'] == $id)
+                                {
                               
                             ?>
                     
-                                <option value="<?php echo $rows ['progCode'] ?>"><?php echo $rows ['progCode']; ?></option>
+                                <option value="<?php echo $rows ['subId'] ?>"><?php echo $rows ['subId']; ?> - <?php echo $rows ['subName']; ?></option>
                                     
                             <?php
            
                                 }
 
-                        ?> 
+                            ?> 
+
+                            <?php
+           
+                                }
+
+                            ?>
 
                         </select>
- 
+
                         <br /><br />
-                      
-                        <input type="submit" class="btn btn-primary btn-lg btn-block" value="View Classes">
+                                            
+                        <input type="submit" class="btn btn-primary btn-lg btn-block" value="View Assignment">
 
                     </div>
             
                 </form>
 
-            </div> 
-              
+            </div>
+
             <div class="form-group row">
 
-                <form action="view_classes_filtered.php" method="post">
+                <form action="add_assignment.php" method="post">
 
                     <div class="col-md-12">
-                
-                        <label for="text" class="text-black">Search Subject ID<span class="text-danger"></span></label>
-                        <input type="text" class="form-control" id="search" name="search" placeholder="Enter Subject ID">
-                        <br />
-
-                        <input type="hidden" name="program" value="<?php echo $program; ?>" />                        
-                        <input type="submit" class="btn btn-primary btn-lg btn-block" value="Search">
+                       
+                        <input type="hidden" name="subId" value="<?php echo $subId; ?>" />                         
+                        <input type="submit" class="btn btn-primary btn-lg btn-block" value="Add New Assigment">
 
                     </div>
             
                 </form>
 
-            </div>     
-
+            </div>
+                    
               <?php
 
-                $path = 'Subject/';
+                $path = 'Assignment/' . $subId . '/Question';
                 $reference = $database->getReference($path);
                 $snapshot = $reference->getSnapshot();
 
@@ -205,31 +209,16 @@
               <table class="table table-bordered">
                 <thead>
                   <tr>
-                    <th>Subject ID</th>
-                    <th>Subject Name</th>
-                    <th>Program</th>
-                    <th>Lecturer ID</th>
-                    <th>Fee</th>
-                    <th>View Classes</th>
+                    <th>Assignment Title</th>
+                    <th>Assignment Description</th> 
+                    <th>Due Date</th>
+                    <th>View Question</th>
+                    <th>Delete</th>
                   </tr>
                 </thead>
                 <tbody>
 
-                    <?php
-
-                        if (isset ($_POST['search'])) 
-                        {
-
-                            $search =  $_POST['search'];
-
-                        }
-
-                        else
-                        {
-                    
-                            $search = "";
-
-                        }
+                    <?php                        
                         
                         if (!$snapshot->exists())
                         {
@@ -242,30 +231,37 @@
                             $reference = $database->getReference($path)->getValue();
                     
                             foreach ($reference as $key => $rows)
-                            {
-                    
-                            if ($rows ['program'] == $program)
-                            {
-                    
-                            if (str_contains($rows ['subId'], strtoupper($search)))
-                            {
+                            {                                                                                            
                               
                     ?>
 
                   <tr>
-                    <td><?php echo $rows ['subId']; ?></td> 
-                    <td><?php echo $rows ['subName']; ?></td>        
-                    <td><?php echo $rows ['program']; ?></td>
-                    <td><?php echo $rows ['lecId']; ?></td>
-                    <td>RM <?php echo $rows ['fee']; ?></td>
+                    <td><?php echo $rows ['assignTitle']; ?></td>
+                    <td><?php echo $rows ['assignDesc']; ?></td>
+                    <td><?php echo $rows ['dueDate']; ?></td>
+                    
+                    <td>
+                     
+                        <a href="<?php echo 'https://storage.googleapis.com/canorus-18990.appspot.com/' . $rows ['fileName']; ?>" target="_blank" class="btn btn-primary btn-lg btn-block">View</></a>
+
+                    </td>
 
                     <td>
 
-                        <form action="edit_class.php" method="post">
+                        <?php
+
+                           $record_to_remove = 'Assignment/' . $subId . '/Question/' . $rows ['assignTitle'];
+                           $record_to_remove2 = 'Assignment/' . $subId . '/Submit/' . $rows ['assignTitle'];
+                           
+                        ?>
+
+                        <form action="remove_assignment.php" method="post">
                     
-                            <input type="hidden" name="subId" value="<?php echo $rows ['subId']; ?>" />
-                            <input type="hidden" name="program" value="<?php echo $rows ['program']; ?>" />
-                            <input type="submit" name="delete" value="View" class="btn btn-primary height-auto btn-sm"/>
+                            <input type="hidden" name="record_to_remove" value="<?php echo $record_to_remove; ?>" />
+                            <input type="hidden" name="record_to_remove2" value="<?php echo $record_to_remove2; ?>" />
+                            <input type="hidden" name="subId" value="<?php echo $subId; ?>" />
+                            <input type="hidden" name="fileName" value="<?php echo $rows ['fileName']; ?>" />
+                            <input type="submit" name="delete" value="Delete" class="btn btn-primary btn-lg btn-block"/>
 
                         </form>
 
@@ -276,25 +272,13 @@
            
                         }
 
-                    ?>
-
-                    <?php
-           
-                        }
-
                     ?> 
 
                     <?php
            
                         }
 
-                    ?> 
-
-                    <?php
-           
-                        }
-
-                    ?> 
+                    ?>                                       
 
                 </tbody>            
               </table>

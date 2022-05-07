@@ -9,18 +9,18 @@
                      <li class="has-children ">
                         <a href="#">Notes</a>
                         <ul class="dropdown">
-                            <li><a href="#">Edit/Remove Notes</a></li>          
+                            <li><a href="view_notes.php">Edit/Remove Notes</a></li>          
                         </ul>
                     </li>
                     <li class="has-children ">
                         <a href="#">Assignment</a>
-                        <ul class="dropdown">
-                            <li><a href="#">Edit/Remove Assignment</a></li> 
-                            <li><a href="#">View Assignment</a></li> 
+                        <ul class="dropdown">                           
+                            <li><a href="view_assignment.php">Edit/Remove Assignment</a></li> 
+                            <li><a href="view_submission.php">View Assignment Submissions</a></li> 
                         </ul>
                     </li>
                     <li class="has-children ">
-                        <a href="#">Annoucements</a>
+                        <a href="#">Announcements</a>
                         <ul class="dropdown">
                             <li><a href="#">Edit/Remove Announcements</a></li>         
                         </ul>

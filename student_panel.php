@@ -133,17 +133,17 @@
           </div>
 
             <div class="col-lg-4 col-md-6 item-entry mb-4">
-            <a href="student_notes.php" class="product-item md-height bg-gray d-block" style="height:300px; width:300px">
+            <a href="student_notes_choose.php" class="product-item md-height bg-gray d-block" style="height:300px; width:300px">
               <img src="images/function12.jpg" alt="Image" class="img-fluid" height="250" width="250">
             </a>
-            <h5 class="item-price"><a href="student_notes.php">View Notes</a></h5>
+            <h5 class="item-price"><a href="student_notes_choose.php">View Notes</a></h5>
           </div>
 
             <div class="col-lg-4 col-md-6 item-entry mb-4">
-            <a href="student_assignment.php" class="product-item md-height bg-gray d-block" style="height:300px; width:300px">
+            <a href="student_assignment_choose.php" class="product-item md-height bg-gray d-block" style="height:300px; width:300px">
               <img src="images/function13.png" alt="Image" class="img-fluid" height="250" width="250">
             </a>
-            <h5 class="item-price"><a href="student_assignment.php">Submit Assignment</a></h5>
+            <h5 class="item-price"><a href="student_assignment_choose.php">Submit Assignment</a></h5>
           </div>
 
             <div class="col-lg-4 col-md-6 item-entry mb-4">

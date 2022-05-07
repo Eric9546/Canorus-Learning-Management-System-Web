@@ -26,6 +26,7 @@
     $program = $_POST ['program'];
     $fee = $_POST ['fee'];
     $lecId = $_POST ['lecId'];
+    $section = $_POST ['section'];
 
     $path = 'Subject/' . $record_to_edit;
     $reference = $database->getReference($path);
@@ -46,6 +47,16 @@
 
     }
 
+    if ($section == NULL)
+    {
+
+        $section = $value ['section'];
+
+    }
+
+    // Capitalize the variables //
+    $section = strtoupper ($section); 
+
     // Updating the data into the database table //
     $path = 'Subject/' . $record_to_edit;
     $reference = $database->getReference($path)->remove();
@@ -56,7 +67,8 @@
                             'subName' => $subName,
                             'program' => $program,
                             'fee' => $fee,                          
-                            'lecId' => $lecId,                     
+                            'lecId' => $lecId,
+                            'section' => $section,                 
                           
                         ];
 

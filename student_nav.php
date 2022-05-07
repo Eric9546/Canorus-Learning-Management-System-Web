@@ -42,13 +42,13 @@
                     <li class="has-children ">
                         <a href="#">Notes</a>
                         <ul class="dropdown">
-                            <li><a href="student_notes.php">View Notes</a></li>
+                            <li><a href="student_notes_choose.php">View Notes</a></li>
                         </ul>
                     </li>
                      <li class="has-children ">
                         <a href="#">Assignment</a>
                         <ul class="dropdown">
-                            <li><a href="student_result_choose.php">Submit Assignment</a></li>          
+                            <li><a href="student_assignment_choose.php">View Assignment</a></li>          
                         </ul>
                     </li>
                     <li class="has-children ">
