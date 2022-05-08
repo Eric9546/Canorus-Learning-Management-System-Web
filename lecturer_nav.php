@@ -22,7 +22,13 @@
                     <li class="has-children ">
                         <a href="#">Announcements</a>
                         <ul class="dropdown">
-                            <li><a href="#">Edit/Remove Announcements</a></li>         
+                            <li><a href="#">Edit/Remove Annoucements</a></li>         
                         </ul>
-                    </li>                   
+                    </li>
+                    <li class="has-children ">
+                        <a href="#">Attendance</a>
+                        <ul class="dropdown">
+                            <li><a href="view_attendance.php">View Attendance</a></li>
+                        </ul>
+                    </li>
                 </ul>             

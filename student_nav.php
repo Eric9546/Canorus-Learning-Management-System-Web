@@ -56,5 +56,11 @@
                         <ul class="dropdown">
                             <li><a href="student_announcements.php">View Announcements</a></li>       
                         </ul>
-                    </li>                  
+                    </li>
+                    <li class="has-children ">
+                        <a href="#">Attendance</a>
+                        <ul class="dropdown">
+                            <li><a href="student_attendance.php">Attendance</a></li>
+                        </ul>
+                    </li>
                 </ul>

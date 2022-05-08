@@ -153,6 +153,15 @@
             <h5 class="item-price"><a href="student_announcements.php">View Announcements</a></h5>
           </div>
 
+            <div class="col-lg-4 col-md-6 item-entry mb-4">
+                <a href="student_attendance.php" class="product-item md-height bg-gray d-block" style="height:300px; width:300px">
+                    <img src="images/function15.jpg" alt="Image" class="img-fluid" height="250" width="250" />
+                </a>
+                <h5 class="item-price">
+                    <a href="student_attendance.php">Attendance</a>
+                </h5>
+            </div>
+
         </div>
       </div>
     </div>
