@@ -54,7 +54,7 @@
                     <li class="has-children ">
                         <a href="#">Announcements</a>
                         <ul class="dropdown">
-                            <li><a href="student_announcements.php">View Announcements</a></li>       
+                            <li><a href="student_announcements_choose.php">View Announcements</a></li>       
                         </ul>
                     </li>
                     <li class="has-children ">
