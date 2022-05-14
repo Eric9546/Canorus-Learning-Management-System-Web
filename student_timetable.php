@@ -130,30 +130,30 @@
 
                         if (!$snapshot->exists())
                         {
-                                              
+
                         }
 
                         else
                         {
 
                             $reference = $database->getReference($path)->getValue();
-                    
+
                             foreach ($reference as $key => $rows)
                             {
-                    
+
                                 if ($rows ['session'] == $session)
                                 {
-                    
+
                                     $path2 = 'Class/' . $rows ['program'] . "/" . $rows ['subId'];
                                     $reference2 = $database->getReference($path2);
                                     $snapshot2 = $reference2->getSnapshot();
-                            
+
                                     $reference2 = $database->getReference($path2)->getValue();
-                    
+
                                         foreach ($reference2 as $key2 => $rows2)
-                                        {  
-                    
-                                            if ($rows2 ['section'] == $rows ['section'])
+                                        {
+
+                                            if (str_contains($rows2 ['section'], $rows ['section']))
                                             {
 
                     ?>

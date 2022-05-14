@@ -115,7 +115,7 @@
                     <div class="col-md-12">
                 
                         <label for="text" class="text-black">Search Lecturers<span class="text-danger"></span></label>
-                        <input type="text" class="form-control" id="search" name="search" placeholder="Enter Lecturer ID">
+                        <input type="text" class="form-control" id="search" name="search" placeholder="Enter Lecturer Name">
                         <br />
 
                         <input type="submit" class="btn btn-primary btn-lg btn-block" value="Search">
@@ -142,9 +142,9 @@
                 </thead>
                 <tbody>
 
-                     <?php
-   
-                        if (isset ($_POST['search'])) 
+                    <?php
+
+                        if (isset ($_POST['search']))
                         {
 
                             $search =  $_POST['search'];
@@ -153,25 +153,27 @@
 
                         else
                         {
-                    
+
                             $search = "";
 
-                        }   
+                        }
 
                         if (!$snapshot->exists())
                         {
-                                              
+
                         }
 
                         else
                         {
 
                             $reference = $database->getReference($path)->getValue();
-                    
+
                             foreach ($reference as $key => $rows)
                             {
 
-                            if (str_contains($rows ['lecId'], strtoupper($search)))
+                            $string = strtoupper ($rows ['name']);
+
+                            if (str_contains($string, strtoupper($search)))
                             {
 
                     ?>

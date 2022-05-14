@@ -160,16 +160,16 @@
                         <label for="c_email" class="text-black">Time Start: </label>
                         <select name="timeStart" required>
 
-                            <option value="8.00am">8.00am</option>
-                            <option value="9.00am">9.00am</option>
-                            <option value="10.00am">10.00am</option>
-                            <option value="11.00am">11.00am</option>
-                            <option value="12.00pm">12.00pm</option>
-                            <option value="1.00pm">1.00pm</option>
-                            <option value="2.00pm">2.00pm</option>
-                            <option value="3.00pm">3.00pm</option>
-                            <option value="4.00pm">4.00pm</option>
-                            <option value="5.00pm">5.00pm</option>
+                            <option value="8:00am">8.00am</option>
+                            <option value="9:00am">9.00am</option>
+                            <option value="10:00am">10.00am</option>
+                            <option value="11:00am">11.00am</option>
+                            <option value="12:00pm">12.00pm</option>
+                            <option value="1:00pm">1.00pm</option>
+                            <option value="2:00pm">2.00pm</option>
+                            <option value="3:00pm">3.00pm</option>
+                            <option value="4:00pm">4.00pm</option>
+                            <option value="5:00pm">5.00pm</option>
                             
                         </select>
                         
@@ -177,16 +177,16 @@
                         <label for="c_email" class="text-black">Time End: </label>
                         <select name="timeEnd" required>
 
-                            <option value="9.00am">9.00am</option>
-                            <option value="10.00am">10.00am</option>
-                            <option value="11.00am">11.00am</option>
-                            <option value="12.00pm">12.00pm</option>
-                            <option value="1.00pm">1.00pm</option>
-                            <option value="2.00pm">2.00pm</option>
-                            <option value="3.00pm">3.00pm</option>
-                            <option value="4.00pm">4.00pm</option> 
-                            <option value="5.00pm">5.00pm</option>
-                            <option value="6.00pm">6.00pm</option>
+                            <option value="9:00am">9.00am</option>
+                            <option value="10:00am">10.00am</option>
+                            <option value="11:00am">11.00am</option>
+                            <option value="12:00pm">12.00pm</option>
+                            <option value="1:00pm">1.00pm</option>
+                            <option value="2:00pm">2.00pm</option>
+                            <option value="3:00pm">3.00pm</option>
+                            <option value="4:00pm">4.00pm</option> 
+                            <option value="5:00pm">5.00pm</option>
+                            <option value="6:00pm">6.00pm</option>
 
                         </select>
                         
@@ -214,8 +214,7 @@
                         ?>
                      
                         <label for="c_email" class="text-black"></label>
-                        <label for="c_email" class="text-black">Section <span class="text-danger"></span></label>                                          
-                        <select name="section" required>
+                        <label for="c_email" class="text-black">Section <span class="text-danger"></span></label>                                                                 
 
                         <?php
 
@@ -224,16 +223,15 @@
                               
                         ?>
                     
-                            <option value="<?php echo $rows; ?>"><?php echo $rows; ?></option>
+                            <input type="checkbox" class="form-group" name="section[]" value="<?php echo $rows; ?>">
+                            <label for="c_email" class="text-black"><?php echo $rows; ?></label>
                                     
                         <?php
            
                             }
 
                         ?> 
-
-                        </select>
-
+                       
                         <br /><br />
                         
                         <label for="c_email" class="text-black">Room: </label>

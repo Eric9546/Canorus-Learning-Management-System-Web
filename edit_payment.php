@@ -211,7 +211,7 @@
                     <div class="col-md-12">
                 
                         <label for="text" class="text-black">Search Students<span class="text-danger"></span></label>
-                        <input type="text" class="form-control" id="search" name="search" placeholder="Enter Student ID">
+                        <input type="text" class="form-control" id="search" name="search" placeholder="Enter Student Name">
                         <br />
 
                         <input type="hidden" name="program" value="<?php echo $program; ?>" />
@@ -280,7 +280,9 @@
                             if ($rows ['program'] == $program && $rows ['session'] == $session)
                             {            
 
-                            if (str_contains($rows ['id'], strtoupper($search)))
+                            $string = strtoupper ($rows ['name']);
+
+                            if (str_contains($string, strtoupper($search)))
                             {
                               
                     ?>

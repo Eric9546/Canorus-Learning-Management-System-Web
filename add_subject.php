@@ -147,7 +147,7 @@
 
                   <div class="col-md-6">
                     <label for="text" class="text-black">Sections <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="id" name="section" placeholder="eg: CS1,CS2,CS3" required>
+                    <input type="text" class="form-control" id="id" name="section" placeholder="Example: CS1,CS2,CS3" required>
                   </div>
 
                 </div>

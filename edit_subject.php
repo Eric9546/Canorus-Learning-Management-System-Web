@@ -159,8 +159,8 @@
                   </div>
 
                   <div class="col-md-6">
-                    <label for="text" class="text-black">Sections <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="id" name="section" placeholder="<?php echo $value ['section']; ?>" required>
+                    <label for="text" class="text-black">Sections (Example: CS1,CS2,CS3)<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="id" name="section" placeholder="<?php echo $value ['section']; ?>">
                   </div>
 
                 </div>

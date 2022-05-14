@@ -60,7 +60,7 @@
                     <li class="has-children ">
                         <a href="#">Attendance</a>
                         <ul class="dropdown">
-                            <li><a href="student_attendance.php">Attendance</a></li>
+                            <li><a href="student_attendance_choose.php">Attendance</a></li>
                         </ul>
                     </li>
                 </ul>
