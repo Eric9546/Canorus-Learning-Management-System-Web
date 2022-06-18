@@ -16,24 +16,31 @@
         echo "<script type='text/javascript'>alert('$msg'); window.location='index.php';</script>";
 
     }
-    
-    if ($_SESSION ['access_level'] !== "Admin")
+
+    // Establishing connection to database //
+    include ('dbcon.php');
+
+    $id = $_SESSION ['id'];
+
+    // Ensure that only staff members can access //
+    $path = 'Registration/' . $id;
+    $reference = $database->getReference($path);
+    $snapshot = $reference->getSnapshot();
+    $value = $snapshot->getValue();
+
+    if ($value ['access_level'] !== "Admin")
     {
      
         alert ("You Do Not Have Access!");
 
     }
 
-    // Establish connection to the logs database //
-    include ('logcon.php');
-    $collection = $firestore->collection($_POST["day"] . "-" . $_POST["month"] . "-" . $_POST["year"] . "-" . $_POST["type"]);
-
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>View Log</title>
+    <title>View Staff</title>
     <?php include('header.php'); ?>
     
   </head>
@@ -84,50 +91,56 @@
         </div>
       </div>
     </div>
-
-   <div class="site-section">
+    
+    <div class="site-section">
       <div class="container">
         <div class="row">
-          <div class="title-section text-center mb-5 col-12">
-            <h2 class="text-uppercase">View Logs</h2>
-          </div>
-        </div>
-
-        <div class="row mb-5">
           <div class="col-md-12">
-            <div class="site-blocks-table">
-              <table class="table table-bordered">
-                <thead>
-                  <tr>
-                    <th>Logs Date: <?php echo $_POST["day"] . "-" . $_POST["month"] . "-" . $_POST["year"] . "-" . $_POST["type"]; ?></th>                   
-                  </tr>
-                </thead>
-                <tbody>
-
-                <?php foreach ($collection->documents() as $document) { ?>
-
-                    <?php echo "<tr>"; ?> 
-
-                        <?php echo "<td>"; ?> 
-                   
-                            <?php
-
-                                    echo $document->data() ['logMsg'];
-                               
-                            ?>
-
-                        <?php echo "</td>"; ?> 
-  
-                    <?php echo "</tr>"; ?> 
-                    
-                 <?php } ?>   
-
-                </tbody>
-              </table>
-            </div>
+            <h2 class="h3 mb-3 text-black">View Staff</h2>
           </div>
-        </div>
+          <div class="col-md-7">
 
+            <form action="view_staff_filtered.php" method="post">
+              
+              <div class="p-3 p-lg-5 border">
+                <div class="form-group row">
+
+                  <div class="col-md-6">
+                    <label for="c_email" class="text-black">Role <span class="text-danger">*</span></label>
+                      <br />
+                          <select name="role" required>
+
+                            <option value="Lecturer">Lecturer</option>
+                            <option value="Admin">Admin</option>
+                            <option value="Program Officer">Program Officer</option>
+                            <option value="Exam Unit">Exam Unit</option>
+                            <option value="Finance">Finance</option>
+                            <option value="Registry">Registry</option>
+
+                        </select>
+                  </div>
+
+                </div>
+                
+                <div class="form-group row">
+                  <div class="col-lg-12">
+                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="View Staff">
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+            
+          <div class="col-md-5 ml-auto">
+
+            <div class="p-4 border mb-3">
+                      
+                <p><img src="images/function7.png" width="400" height="300"/></p>
+
+            </div>
+                    
+        </div>
+        </div>
       </div>
     </div>
 

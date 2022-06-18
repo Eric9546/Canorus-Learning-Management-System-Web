@@ -1,46 +1,46 @@
 <?php
+
+session_start ();
+
+if (!isset ($_SESSION ['id']))
+{
     
-    session_start ();
+    header ("Location: login.php");
+    
+}
 
-    if (!isset ($_SESSION ['id']))
-    {
-        
-        header ("Location: login.php");
-              
-    }
+// Declaring function for alert message //
+function alert ($msg)
+{
 
-    // Declaring function for alert message //
-    function alert ($msg)
-    {
+    echo "<script type='text/javascript'>alert('$msg'); window.location='index.php';</script>";
 
-        echo "<script type='text/javascript'>alert('$msg'); window.location='index.php';</script>";
+}
 
-    }
+// Establishing connection to database //
+include ('dbcon.php');
 
-    // Establishing connection to database //
-    include ('dbcon.php');
+$id = $_SESSION ['id'];
 
-    $id = $_SESSION ['id'];
+// Ensure that only staff members can access //
+$path = 'Registration/' . $id;
+$reference = $database->getReference($path);
+$snapshot = $reference->getSnapshot();
+$value = $snapshot->getValue();
 
-    // Ensure that only staff members can access //
-    $path = 'Registration/' . $id;
-    $reference = $database->getReference($path);
-    $snapshot = $reference->getSnapshot();
-    $value = $snapshot->getValue();
+if ($value ['access_level'] !== "Registry" && $value ['access_level'] !== "Admin")
+{
+    
+    alert ("You Do Not Have Access!");
 
-    if ($value ['access_level'] !== "Program Officer" && $value ['access_level'] !== "Admin")
-    {
-     
-        alert ("You Do Not Have Access!");
-
-    }
+}
 
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>View Enrolment</title>
+    <title>View Student</title>
     <?php include('header.php'); ?>
     
   </head>
@@ -79,10 +79,10 @@
              <span class="icon-user">
 
               <?php 
-                             
-                    $id = $_SESSION ['id'];   
-                    echo "<b>Welcome, $id </b><a href='logout.php' class='btn btn-primary btn-lg btn-block'><b>Logout</b></span></a>";
-                          
+              
+              $id = $_SESSION ['id'];   
+              echo "<b>Welcome, $id </b><a href='logout.php' class='btn btn-primary btn-lg btn-block'><b>Logout</b></span></a>";
+              
               ?>
               
               </span>  
@@ -96,21 +96,21 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <h2 class="h3 mb-3 text-black">View Enrolment</h2>
+            <h2 class="h3 mb-3 text-black">View Student</h2>
           </div>
           <div class="col-md-7">
 
-            <form action="edit_enrolment.php" method="post">
+            <form action="view_student_filtered.php" method="post">
               
               <div class="p-3 p-lg-5 border">
                 <div class="form-group row">
 
                      <?php
 
-                        $path = 'Program/';
-                        $reference = $database->getReference($path)->getValue();
+                     $path = 'Program/';
+                     $reference = $database->getReference($path)->getValue();
 
-                    ?>
+                     ?>
 
                   <div class="col-md-6">
                     <label for="c_email" class="text-black">Program <span class="text-danger">*</span></label>
@@ -119,26 +119,26 @@
 
                             <?php
 
-                                foreach ($reference as $key => $rows)
-                                {
-                              
+                            foreach ($reference as $key => $rows)
+                            {
+                                
                             ?>
                     
                                 <option value="<?php echo $rows ['progCode'] ?>"><?php echo $rows ['progCode']; ?></option>
                                     
                             <?php
-           
-                                }
+                                                                                       
+                            }
 
-                        ?> 
+                            ?> 
 
                         </select>
                   </div>
 
                     <?php
 
-                        $path = 'Session/';
-                        $reference = $database->getReference($path)->getValue();
+                    $path = 'Session/';
+                    $reference = $database->getReference($path)->getValue();
 
                     ?>
 
@@ -149,26 +149,26 @@
 
                         <?php
 
-                            foreach ($reference as $key => $rows)
-                            {
-                              
+                        foreach ($reference as $key => $rows)
+                        {
+                            
                         ?>
                     
                             <option value="<?php echo $rows ['session'] ?>"><?php echo $rows ['session']; ?></option>
                                     
                         <?php
-           
-                            }
+                                                                                  
+                        }
 
                         ?> 
-
+                            
                         </select>       
                   </div>
                 </div>
                 
                 <div class="form-group row">
                   <div class="col-lg-12">
-                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="View Enrolments">
+                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="View Student">
                   </div>
                 </div>
               </div>
@@ -179,7 +179,7 @@
 
             <div class="p-4 border mb-3">
                       
-                <p><img src="images/function1.jpg" width="400" height="300"/></p>
+                <p><img src="images/function16.png" width="400" height="300"/></p>
 
             </div>
                     

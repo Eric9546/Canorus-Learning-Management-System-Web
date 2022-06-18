@@ -1,12 +1,12 @@
 <?php
-    
+
     session_start ();
 
     if (!isset ($_SESSION ['id']))
     {
-        
+
         header ("Location: login.php");
-              
+
     }
 
     // Declaring function for alert message //
@@ -28,9 +28,9 @@
     $snapshot = $reference->getSnapshot();
     $value = $snapshot->getValue();
 
-    if ($value ['access_level'] !== "Main" && $value ['access_level'] !== "Admin")
+    if ($value ['access_level'] !== "Program Officer" && $value ['access_level'] !== "Admin")
     {
-     
+
         alert ("You Do Not Have Access!");
 
     }

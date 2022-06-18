@@ -1,12 +1,12 @@
 <?php
-
+    
     session_start ();
 
     if (!isset ($_SESSION ['id']))
     {
-
+        
         header ("Location: login.php");
-
+              
     }
 
     // Declaring function for alert message //
@@ -28,9 +28,9 @@
     $snapshot = $reference->getSnapshot();
     $value = $snapshot->getValue();
 
-    if ($value ['access_level'] !== "Program Officer" && $value ['access_level'] !== "Admin")
+    if ($value ['access_level'] !== "Admin")
     {
-
+      
         alert ("You Do Not Have Access!");
 
     }
@@ -40,7 +40,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Add Lecturer</title>
+    <title>Add Staff</title>
     <?php include('header.php'); ?>
     
   </head>
@@ -96,22 +96,44 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <h2 class="h3 mb-3 text-black">Add Lecturer</h2>
+            <h2 class="h3 mb-3 text-black">Add Staff</h2>
           </div>
           <div class="col-md-7">
 
-            <form action="add_lecturer_execute.php" method="post">
+            <form action="add_staff_execute.php" method="post">
               
               <div class="p-3 p-lg-5 border">
                 <div class="form-group row">
                   <div class="col-md-6">
-                    <label for="text" class="text-black">Lecturer ID <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="id" name="lecId" placeholder="Lecturer ID" required>
+                    <label for="text" class="text-black">User ID <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="id" name="id" placeholder="User ID" required>
                   </div>
                   <div class="col-md-6">
+                    <label for="text" class="text-black">Password <span class="text-danger">*</span></label>
+                    <input type="password" class="form-control" id="pass" name="password" placeholder="Password" required>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-md-6">
+                    <label for="c_email" class="text-black">Access Level <span class="text-danger">*</span></label>
+                      <br />
+                    <select name="access_level" required>
+                       
+                        <option value="Lecturer">Lecturer</option>
+                        <option value="Admin">Admin</option>
+                        <option value="Program Officer">Program Officer</option>
+                        <option value="Exam Unit">Exam Unit</option>
+                        <option value="Finance">Finance</option>
+                        <option value="Registry">Registry</option>
+
+                    </select>
+                   
+                  </div>
+                    <div class="col-md-6">
                     <label for="c_fname" class="text-black">Name <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" id="c_fname" name="name" placeholder="Name" required>
                   </div>
+
                 </div>
                 <div class="form-group row">
                   <div class="col-md-6">
@@ -124,9 +146,21 @@
                     </div>
 
                 </div>
+
+                <div class="form-group row">
+                  <div class="col-md-6">
+                    <label for="c_address" class="text-black">IC/Passport <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="c_address" name="ic" placeholder="IC/Passport" required>
+                </div>
+                  <div class="col-md-6">
+                      <label for="c_address" class="text-black">Address <span class="text-danger">*</span></label>
+                      <input type="text" class="form-control" id="c_address" name="address" placeholder="Address" required>
+                    </div>
+                </div>
+                
                 <div class="form-group row">
                   <div class="col-lg-12">
-                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="Add Lecturer">
+                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="Add Staff">
                   </div>
                 </div>
               </div>
@@ -136,7 +170,7 @@
 
             <div class="p-4 border mb-3">
                       
-                <p><img src="images/function8.png" width="400" height="300"/></p>
+                <p><img src="images/function7.png" width="400" height="300"/></p>
 
             </div>
                     

@@ -1,10 +1,10 @@
                     <ul class="site-menu js-clone-nav d-none d-lg-block">
                     <li><a href="admin_panel.php">Home</a></li>
                     <li class="has-children ">
-                        <a href="#">User</a>
+                        <a href="#">Staff</a>
                         <ul class="dropdown">
-                            <li><a href="add_user.php">Add User</a></li>
-                            <li><a href="view_user.php">Edit/Remove User</a></li>                        
+                            <li><a href="add_staff.php">Add Staff</a></li>
+                            <li><a href="view_staff.php">Edit/Remove Staff</a></li>                        
                         </ul>
                     </li>
                      <li class="has-children ">
@@ -44,8 +44,15 @@
                         </ul>
                     </li>
                 </ul>
-                <br />
+                <br />        
                 <ul class="site-menu js-clone-nav d-none d-lg-block">                  
+                    <li class="has-children ">
+                        <a href="#">Student</a>
+                        <ul class="dropdown">
+                            <li><a href="add_student.php">Add Student</a></li>
+                            <li><a href="view_student.php">Edit/Remove Student</a></li>                          
+                        </ul>
+                    </li>
                     <li class="has-children ">
                         <a href="#">Log</a>
                         <ul class="dropdown">

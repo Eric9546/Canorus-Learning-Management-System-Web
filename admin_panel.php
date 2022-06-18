@@ -99,8 +99,8 @@
             <a href="#" class="product-item md-height bg-gray d-block" style="height:300px; width:300px">
               <img src="images/function7.png" alt="Image" class="img-fluid" height="250" width="250">
             </a>
-            <h5 class="item-price"><a href="add_user.php"><span class="icon-asterisk"> Add User</span></a></h5>
-            <h5 class="item-price"><a href="view_user.php"><span class="icon-asterisk"> Edit/Remove User</span></a></h5>
+            <h5 class="item-price"><a href="add_staff.php"><span class="icon-asterisk"> Add Staff</span></a></h5>
+            <h5 class="item-price"><a href="view_staff.php"><span class="icon-asterisk"> Edit/Remove Staff</span></a></h5>
             </div>
 
           <div class="col-lg-4 col-md-6 item-entry mb-4">
@@ -144,6 +144,13 @@
             <h5 class="item-price"><a href="add_program_session.php"><span class="icon-asterisk"> Add Program/Session</span></a></h5>
             <h5 class="item-price"><a href="remove_program_session.php"><span class="icon-asterisk"> Remove Program/Session</span></a></h5>  
           </div>
+            <div class="col-lg-4 col-md-6 item-entry mb-4">
+                <a href="#" class="product-item md-height bg-gray d-block" style="height:300px; width:300px">
+                    <img src="images/function16.png" alt="Image" class="img-fluid" height="250" width="250" />
+                </a>
+                <h5 class="item-price"><a href="add_student.php"><span class="icon-asterisk"> Add Student</span></a></h5>
+                <h5 class="item-price"><a href="view_student.php"><span class="icon-asterisk"> Edit/Remove Student</span></a></h5>              
+            </div>
             <div class="col-lg-4 col-md-6 item-entry mb-4">
             <a href="view_log.php" class="product-item md-height bg-gray d-block" style="height:300px; width:300px">
               <img src="images/function11.jpg" alt="Image" class="img-fluid" height="250" width="250">

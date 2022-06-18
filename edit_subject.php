@@ -31,7 +31,7 @@
     $snapshot = $reference->getSnapshot();
     $value = $snapshot->getValue();
 
-    if ($value ['access_level'] !== "Teaching" && $value ['access_level'] !== "Admin")
+    if ($value ['access_level'] !== "Program Officer" && $value ['access_level'] !== "Admin")
     {
      
         alert ("You Do Not Have Access!");

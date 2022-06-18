@@ -152,7 +152,7 @@ if ($value ['access_level'] !== "Lecturer")
                     ?>
 
                   <div class="col-md-6">
-                    <label for="c_email" class="text-black">Program <span class="text-danger">*</span></label>
+                    <label for="c_email" class="text-black">Session <span class="text-danger">*</span></label>
                       <br />
                           <select name="session" required>
 

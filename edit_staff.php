@@ -1,12 +1,12 @@
 <?php
-
+    
     session_start ();
 
     if (!isset ($_SESSION ['id']))
     {
-
+        
         header ("Location: login.php");
-
+              
     }
 
     // Declaring function for alert message //
@@ -21,6 +21,7 @@
     include ('dbcon.php');
 
     $id = $_SESSION ['id'];
+    $record_to_edit = $_POST ['record_to_edit'];
 
     // Ensure that only staff members can access //
     $path = 'Registration/' . $id;
@@ -28,9 +29,9 @@
     $snapshot = $reference->getSnapshot();
     $value = $snapshot->getValue();
 
-    if ($value ['access_level'] !== "Program Officer" && $value ['access_level'] !== "Admin")
+    if ($value ['access_level'] !== "Admin")
     {
-
+     
         alert ("You Do Not Have Access!");
 
     }
@@ -40,7 +41,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Add Lecturer</title>
+    <title>Edit Staff</title>
     <?php include('header.php'); ?>
     
   </head>
@@ -96,37 +97,81 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <h2 class="h3 mb-3 text-black">Add Lecturer</h2>
+            <h2 class="h3 mb-3 text-black">Edit User</h2>
           </div>
           <div class="col-md-7">
 
-            <form action="add_lecturer_execute.php" method="post">
+            <form action="edit_staff_execute.php" method="post">
               
+            <?php
+
+                $path = 'Registration/' . $record_to_edit;
+                $reference = $database->getReference($path);
+                $snapshot = $reference->getSnapshot();
+                $value = $snapshot->getValue();
+
+             ?>
+
               <div class="p-3 p-lg-5 border">
                 <div class="form-group row">
                   <div class="col-md-6">
-                    <label for="text" class="text-black">Lecturer ID <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="id" name="lecId" placeholder="Lecturer ID" required>
+                    <label for="text" class="text-black">Staff ID To Be Edited:</label>
+                    <label for="text" class="text-black"><?php echo "$record_to_edit"; ?></label> 
+                     <input type='hidden' name='record_to_edit' value='<?php echo "$record_to_edit"; ?>' />
                   </div>
                   <div class="col-md-6">
-                    <label for="c_fname" class="text-black">Name <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="c_fname" name="name" placeholder="Name" required>
+                    <label for="text" class="text-black">Password <span class="text-danger"></span></label>
+                    <input type="password" class="form-control" id="pass" name="password" placeholder="<?php echo $value ['password']; ?>">
                   </div>
                 </div>
                 <div class="form-group row">
                   <div class="col-md-6">
-                    <label for="c_subject" class="text-black">Email <span class="text-danger">*</span></label>
-                    <input type="email" class="form-control" id="c_subject" name="email" placeholder="Email" required>
+                    <label for="c_email" class="text-black">Access Level <span class="text-danger">*</span></label>
+                      <br />
+                    <select name="access_level" required>
+
+                        <option value="Lecturer">Lecturer</option>
+                        <option value="Admin">Admin</option>
+                        <option value="Program Officer">Program Officer</option>
+                        <option value="Exam Unit">Exam Unit</option>
+                        <option value="Finance">Finance</option>
+                        <option value="Registry">Registry</option>
+
+                    </select>
+                   
                   </div>
                     <div class="col-md-6">
-                      <label for="c_phone" class="text-black">Phone <span class="text-danger">*</span></label>
-                      <input type="text" pattern="[0-9]{10}" class="form-control" id="c_phone" name="telno" placeholder="Phone" required>
-                    </div>
+                    <label for="c_fname" class="text-black">Name <span class="text-danger"></span></label>
+                    <input type="text" class="form-control" id="c_fname" name="name" placeholder="<?php echo $value ['name']; ?>">
+                  </div>
 
                 </div>
                 <div class="form-group row">
+                  <div class="col-md-6">
+                    <label for="c_subject" class="text-black">Email <span class="text-danger"></span></label>
+                    <input type="email" class="form-control" id="c_subject" name="email" placeholder="<?php echo $value ['email']; ?>">
+                  </div>
+                    <div class="col-md-6">
+                      <label for="c_phone" class="text-black">Phone <span class="text-danger"></span></label>
+                      <input type="text" pattern="[0-9]{10}" class="form-control" id="c_phone" name="telno" placeholder="<?php echo $value ['telno']; ?>">
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+                <div class="col-md-6">
+                    <label for="c_address" class="text-black">IC/Passport <span class="text-danger"></span></label>
+                    <input type="text" class="form-control" id="c_address" name="ic" placeholder="<?php echo $value ['ic']; ?>">
+                </div>
+                  <div class="col-md-6">
+                      <label for="c_address" class="text-black">Address <span class="text-danger"></span></label>
+                      <input type="text" class="form-control" id="c_address" name="address" placeholder="<?php echo $value ['address']; ?>">
+                    </div>
+                </div>
+               
+                <div class="form-group row">
                   <div class="col-lg-12">
-                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="Add Lecturer">
+                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="Edit Staff">
                   </div>
                 </div>
               </div>
@@ -136,7 +181,7 @@
 
             <div class="p-4 border mb-3">
                       
-                <p><img src="images/function8.png" width="400" height="300"/></p>
+                <p><img src="images/function7.png" width="400" height="300"/></p>
 
             </div>
                     

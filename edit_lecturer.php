@@ -1,12 +1,12 @@
 <?php
-    
+
     session_start ();
 
     if (!isset ($_SESSION ['id']))
     {
-        
+
         header ("Location: login.php");
-              
+
     }
 
     // Declaring function for alert message //
@@ -29,9 +29,9 @@
     $snapshot = $reference->getSnapshot();
     $value = $snapshot->getValue();
 
-    if ($value ['access_level'] !== "Main" && $value ['access_level'] !== "Admin")
+    if ($value ['access_level'] !== "Program Officer" && $value ['access_level'] !== "Admin")
     {
-     
+
         alert ("You Do Not Have Access!");
 
     }
@@ -71,50 +71,7 @@
           
         <div class="main-nav d-none d-lg-block">
             <nav class="site-navigation text-right text-md-center" role="navigation">
-                <ul class="site-menu js-clone-nav d-none d-lg-block">
-                    <li><a href="admin_panel.php">Home</a></li>
-                    <li class="has-children ">
-                        <a href="#">Student</a>
-                        <ul class="dropdown">
-                            <li><a href="add_user.php">Add User</a></li>
-                            <li><a href="view_user.php">Edit/Remove User</a></li>                        
-                        </ul>
-                    </li>
-                     <li class="has-children ">
-                        <a href="#">Lecturer</a>
-                        <ul class="dropdown">
-                            <li><a href="add_lecturer.php">Add Lecturer</a></li>
-                            <li><a href="view_lecturer.php">Edit/Remove Lecturer</a></li>                          
-                        </ul>
-                    </li>
-                    <li class="has-children ">
-                        <a href="#">Subject</a>
-                        <ul class="dropdown">
-                            <li><a href="add_subject.php">Add Subject</a></li>
-                            <li><a href="view_subject.php">Edit/Remove Subject</a></li>                           
-                        </ul>
-                    </li>
-                    <li class="has-children ">
-                        <a href="#">Result</a>
-                        <ul class="dropdown">
-                            <li><a href="view_result.php">Edit/Remove Result</a></li>                       
-                        </ul>
-                    </li>
-                    <li class="has-children ">
-                        <a href="#">Payment</a>
-                        <ul class="dropdown">
-                            <li><a href="view_payment.php">View Student Payment</a></li>
-                        </ul>
-                    </li>
-                    <li class="has-children ">
-                        <a href="#">Enrolment</a>
-                        <ul class="dropdown">
-                            <li><a href="view_enrolment.php">Edit/Remove Enrolment</a></li>
-                            <li><a href="add_program_session.php">Add Program/Session</a></li>
-                            <li><a href="remove_program_session.php">Remove Program/Session</a></li>
-                        </ul>
-                    </li>
-                </ul>
+                <?php include('admin_nav.php'); ?>
             </nav>
           </div>
 
