@@ -17,6 +17,9 @@
     $record_to_remove = $_POST ['record_to_remove'];
     $program = $_POST ['program'];
     $subId = $_POST ['subId'];
+    $day = $_POST ['day'];
+    $timeStart = $_POST ['timeStart'];
+    $timeEnd = $_POST ['timeEnd'];
     $_SESSION ['program'] = $program;
     $_SESSION ['subId'] = $subId;
 
@@ -28,7 +31,14 @@
     if ($reference)
     {
 
-       header ("Location: edit_class.php");     
+        $_SESSION ['log_id'] = $_SESSION ['id'];
+        $_SESSION ['log_program'] = $program;
+        $_SESSION ['log_subId'] = $subId;
+        $_SESSION ['log_day'] = $day;
+        $_SESSION ['log_timeStart'] = $timeStart;
+        $_SESSION ['log_timeEnd'] = $timeEnd;
+
+        header ("Location: log_remove_class.php");
 
     }
 

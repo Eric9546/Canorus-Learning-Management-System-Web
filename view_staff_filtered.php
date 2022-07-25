@@ -231,7 +231,9 @@
 
                         <form action="remove_staff.php" method="post">
 
-                            <input type="hidden" name="record_to_remove" value="<?php echo $record_to_remove; ?>" />                           
+                            <input type="hidden" name="record_to_remove" value="<?php echo $record_to_remove; ?>" />
+                            <input type="hidden" name="newId" value="<?php echo $rows ['id']; ?>" />
+                            <input type="hidden" name="access_level" value="<?php echo $rows ['access_level']; ?>" />
                             <input type="submit" name="delete" value="Remove" class="btn btn-primary btn-lg btn-block"/>
 
                         </form>

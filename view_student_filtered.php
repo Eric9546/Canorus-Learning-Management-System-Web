@@ -250,13 +250,16 @@ if ($value ['access_level'] !== "Registry" && $value ['access_level'] !== "Admin
 
                                             <?php
 
-                            $record_to_remove = $rows ['id'];
+                                                $record_to_remove = $rows ['id'];
 
                                             ?>
 
                                             <form action="remove_student.php" method="post">
 
                                                 <input type="hidden" name="record_to_remove" value="<?php echo $record_to_remove; ?>" />
+                                                <input type="hidden" name="stuId" value="<?php echo $rows ['id']; ?>" />
+                                                <input type="hidden" name="program" value="<?php echo $rows ['program']; ?>" />
+                                                <input type="hidden" name="session" value="<?php echo $rows ['session']; ?>" />
                                                 <input type="submit" name="delete" value="Remove" class="btn btn-primary btn-lg btn-block" />
 
                                             </form>
@@ -267,25 +270,25 @@ if ($value ['access_level'] !== "Registry" && $value ['access_level'] !== "Admin
 
                                     <?php
 
-                        }
+                                        }
 
                                     ?>
 
                                     <?php
 
-                        }
+                                        }
 
                                     ?>
 
                                     <?php
 
-                        }
+                                        }
 
                                     ?>
 
                                     <?php
 
-                        }
+                                        }
 
                                     ?>
 

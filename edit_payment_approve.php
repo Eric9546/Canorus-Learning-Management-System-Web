@@ -13,9 +13,9 @@
      // Ensure that the user is logged in //
      if (!isset ($_SESSION ['id']))
      {
-              
+
         header ("Location: login.php");
-                    
+
      }
 
     $record_to_approve = $_POST ['record_to_approve'];
@@ -30,12 +30,12 @@
 
     // Establishing connection to database //
     include ('dbcon.php');
-      
+
     // Updating the data in the payment table //
     $updateData = [
-    
+
                     'payStatus' => 'Approved',
-                    
+
                 ];
 
         $ref_table = $record_to_approve;
@@ -43,27 +43,32 @@
 
     // Updating the data in the enrolment table //
     $updateData = [
-    
+
                     'payStatus' => 'Paid',
-                    
+
                 ];
 
     $ref_table = "Enrolment/" . $id;
     $updateQuery = $database->getReference($ref_table)->getValue();
     foreach ($updateQuery as $key => $rows)
     {
-        
+
         if ($rows ['session'] == $session )
         {
-        
+
             $path = "Enrolment/" . $id . "/" . $key;
             $updateQuery = $database->getReference($path)->update($updateData);
 
 
         }
-       
+
     }
 
-    header ("Location: edit_payment.php"); 
+    $_SESSION ['log_id'] = $_SESSION ['id'];
+    $_SESSION ['log_stuId'] = $id;
+    $_SESSION ['log_session'] = $session;
+    $_SESSION ['log_program'] = $program;
+
+    header ("Location: log_approve_payment.php");
 
 ?>

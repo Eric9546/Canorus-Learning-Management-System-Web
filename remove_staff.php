@@ -12,7 +12,9 @@
     include ('dbcon.php');
 
     // Gathering the input from user //
-    $record_to_remove = $_POST ['record_to_remove'];   
+    $record_to_remove = $_POST ['record_to_remove'];
+    $newId = $_POST ['newId'];
+    $access_level = $_POST ['access_level'];
 
     // Query to delele the record from the database table //
     $path = 'Registration/' . $record_to_remove;
@@ -22,7 +24,11 @@
     if ($reference)
     {
 
-       header ("Location: view_staff.php");     
+        $_SESSION ['log_id'] = $_SESSION ['id'];
+        $_SESSION ['log_newId'] = $newId;
+        $_SESSION ['log_access_level'] = $access_level;
+
+       header ("Location: log_remove_staff.php");
 
     }
 

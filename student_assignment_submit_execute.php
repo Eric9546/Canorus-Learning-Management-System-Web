@@ -84,9 +84,12 @@
         $ref_table = $record_to_submit;
         $postRef_result = $database->getReference($ref_table)->set($postData);
 
-        header ("Location: student_assignment_filtered.php");
+        $_SESSION ['log_id'] = $id;
+        $_SESSION ['log_subId'] = $subId;
+        $_SESSION ['log_assignTitle'] = $assignTitle;
+        $_SESSION ['log_fileName'] = $newfilename;
 
-
+        header ("Location: log_student_assignment.php");
 
      }
 

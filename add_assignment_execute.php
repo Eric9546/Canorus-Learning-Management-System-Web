@@ -13,9 +13,9 @@
      // Ensure that the user is logged in //
      if (!isset ($_SESSION ['id']))
      {
-              
+
         header ("Location: login.php");
-                    
+
      }
 
      else
@@ -38,7 +38,7 @@
         $_SESSION ['subId'] = $subId;
         $dueDate = $day . "-" . $month . "-" . $year . ", " . $hour . ":" . $min . $meridiem;
         $filename = $_FILES['myfile']['name'];
-          
+
         // Validating the input //
         if (empty ($assignTitle))
         {
@@ -59,7 +59,7 @@
 
             alert ("Error Please Check Your Day!");
 
-        }      
+        }
 
 
         else if (empty ($month))
@@ -67,38 +67,38 @@
 
             alert ("Error Please Check Your Month!");
 
-        }   
+        }
 
         else if (empty ($year))
         {
 
             alert ("Error Please Check Your Year!");
 
-        }   
+        }
 
         else if (empty ($hour))
         {
 
             alert ("Error Please Check Your Hour!");
 
-        }   
+        }
 
         else if (empty ($min))
         {
 
             alert ("Error Please Check Your Minute!");
 
-        }   
+        }
 
         else if (empty ($meridiem))
         {
 
             alert ("Error Please Check Your Meridiem!");
 
-        }   
+        }
         // Getting the file extension //
         $extension = pathinfo($filename, PATHINFO_EXTENSION);
-     
+
         // Query to check if assignment title already exists //
         $path = 'Assignment/' . $subId . '/Question/' . $assignTitle;
         $reference = $database->getReference($path);
@@ -112,15 +112,15 @@
             alert ("Assignment Title Already Exists!");
 
         }
-        
+
         else
         {
-           
+
             // Rename the file //
             $newfilename = "ASSIGNMENT_" . $subId . '_' . $assignTitle . "." . $extension;
 
             // The physical file on a temporary uploads directory on the server //
-            $file = $_FILES['myfile']['tmp_name'];       
+            $file = $_FILES['myfile']['tmp_name'];
 
             // Destination of the file on the server //
             $destination = 'uploads/' . $newfilename;
@@ -138,27 +138,31 @@
                                             'predefinedAcl' => 'publicRead'
                                         ]
                                     );
-            
+
             // Clear local temp file //
             unlink ($destination);
 
              // Inserting the data into the database table //
             $postData = [
-    
+
                             'assignTitle' => $assignTitle,
                             'assignDesc' => $assignDesc,
                             'dueDate' => $dueDate,
-                            'fileName' => $newfilename,                         
-                            
+                            'fileName' => $newfilename,
+
                         ];
 
             $ref_table = 'Assignment/' . $subId . '/Question/' . $assignTitle;
             $postRef_result = $database->getReference($ref_table)->set($postData);
 
-            header ("Location: view_assignment_filtered.php");
-            
+            $_SESSION ['log_id'] = $_SESSION ['id'];
+            $_SESSION ['log_subId'] = $subId;
+            $_SESSION ['log_assignTitle'] = $assignTitle;
+
+            header ("Location: log_add_assignment.php");
+
         }
-   
+
      }
-     
+
 ?>

@@ -311,6 +311,9 @@
                             <input type="hidden" name="record_to_remove" value="<?php echo $record_to_remove; ?>" />
                             <input type="hidden" name="program" value="<?php echo $program; ?>" />
                             <input type="hidden" name="subId" value="<?php echo $subId; ?>" />
+                            <input type="hidden" name="day" value="<?php echo $rows ['day']; ?>" />
+                            <input type="hidden" name="timeStart" value="<?php echo $rows ['timeStart']; ?>" />
+                            <input type="hidden" name="timeEnd" value="<?php echo $rows ['timeEnd']; ?>" />
                             <input type="submit" name="delete" value="Remove" class="btn btn-primary height-auto btn-sm"/>
 
                         </form>

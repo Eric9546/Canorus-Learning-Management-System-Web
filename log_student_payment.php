@@ -17,7 +17,7 @@
 
     $collection = $firestore->collection($logDate . "-PAYMENT");
     $log = $collection->document(uniqid());
-    $logMsg = "User with the ID: " . $id . " enrolled under " . $program . " " . $session . 
+    $logMsg = "Student with the ID: " . $id . " enrolled under " . $program . " " . $session . 
               " submitted their payment file titled " . $newfilename . " at " . $logTime ." HRS using the " . "WEB" . " platform";
     $log->set(['logMsg' => $logMsg]);
 

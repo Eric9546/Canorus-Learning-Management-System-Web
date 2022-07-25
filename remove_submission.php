@@ -26,6 +26,7 @@ $record_to_remove = $_POST ['record_to_remove'];
 $fileName =  $_POST ['fileName'];
 $record_to_view = $_POST ['record_to_view'];
 $subId = $_POST ['subId'];
+$stuId = $_POST ['stuId'];
 $assignTitle = $_POST ['assignTitle'];
 $_SESSION ['record_to_view'] = $record_to_view;
 $_SESSION ['subId'] = $subId;
@@ -45,7 +46,12 @@ $object->delete();
 if ($reference)
 {
 
-    header ("Location: edit_submission.php");
+    $_SESSION ['log_id'] = $_SESSION ['id'];
+    $_SESSION ['log_stuId'] = $stuId;
+    $_SESSION ['log_subId'] = $subId;
+    $_SESSION ['log_assignTitle'] = $assignTitle;
+
+    header ("Location: log_remove_submission.php");
 
 }
 

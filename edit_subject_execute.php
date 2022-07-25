@@ -4,9 +4,9 @@
 
     if (!isset ($_SESSION ['id']))
     {
-        
+
         header ("Location: login.php");
-              
+
     }
 
     // Declaring function for alert message //
@@ -37,7 +37,7 @@
     {
 
         $subName = $value ['subName'];
-        
+
     }
 
     if ($fee == NULL)
@@ -55,26 +55,31 @@
     }
 
     // Capitalize the variables //
-    $section = strtoupper ($section); 
+    $section = strtoupper ($section);
 
     // Updating the data into the database table //
     $path = 'Subject/' . $record_to_edit;
     $reference = $database->getReference($path)->remove();
 
     $postData = [
-    
+
                             'subId' => $record_to_edit,
                             'subName' => $subName,
                             'program' => $program,
-                            'fee' => $fee,                          
+                            'fee' => $fee,
                             'lecId' => $lecId,
-                            'section' => $section,                 
-                          
+                            'section' => $section,
+
                         ];
 
     $ref_table = "Subject/" . $record_to_edit;
     $postRef_result = $database->getReference($ref_table)->set($postData);
 
-    header ('Location:view_subject.php');
+    $_SESSION ['log_id'] = $_SESSION ['id'];
+    $_SESSION ['log_subId'] = $record_to_edit;
+    $_SESSION ['log_subName'] = $subName;
+    $_SESSION ['log_program'] = $program;
+
+    header ('Location:log_edit_subject.php');
 
 ?>

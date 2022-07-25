@@ -103,6 +103,11 @@ $postData = [
 $ref_table = "Registration/" . $record_to_edit;
 $postRef_result = $database->getReference($ref_table)->set($postData);
 
-header ('Location:view_student.php');
+$_SESSION ['log_id'] = $_SESSION ['id'];
+$_SESSION ['log_stuId'] = $record_to_edit;
+$_SESSION ['log_program'] = $program;
+$_SESSION ['log_session'] = $session;
+
+header ('Location:log_edit_student.php');
 
 ?>

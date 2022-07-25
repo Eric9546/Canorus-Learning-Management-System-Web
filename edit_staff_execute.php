@@ -103,6 +103,10 @@
     $ref_table = "Registration/" . $record_to_edit;
     $postRef_result = $database->getReference($ref_table)->set($postData);
 
-    header ('Location:view_staff.php');
+    $_SESSION ['log_id'] = $_SESSION ['id'];
+    $_SESSION ['log_newId'] = $record_to_edit;
+    $_SESSION ['log_access_level'] = $access_level;
+
+    header ('Location:log_edit_staff.php');
 
 ?>

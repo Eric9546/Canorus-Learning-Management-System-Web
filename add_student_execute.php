@@ -34,8 +34,6 @@ else
     include ('dbcon.php');
 
     // Gathering the user input //
-    $id = $_POST ['id'];
-    $password = $_POST ['password'];
     $access_level = "Student";
     $name = $_POST ['name'];
     $email = $_POST ['email'];
@@ -45,22 +43,7 @@ else
     $program = $_POST ['program'];
     $session = $_POST ['session'];
 
-    // Validating the input //
-    if (empty ($id))
-    {
-
-        alert ("Error Please Check Your Student ID!");
-
-    }
-
-    else if (empty ($password))
-    {
-
-        alert ("Error Please Check Your Password!");
-
-    }
-
-    else if (empty ($access_level))
+    if (empty ($access_level))
     {
 
         alert ("Error Please Check Your Access Level!");
@@ -129,6 +112,15 @@ else
         alert ("Error Please Check Your Session!");
 
     }
+
+    // Generate ID and password //
+    date_default_timezone_set('Asia/Singapore');
+    $logDate = date("Ymd");
+    $logTime = date("is");
+    $finalLogDate = mb_substr($logDate, 2, 6);
+
+    $id = "S" . $finalLogDate . $logTime;
+    $password = "s" . $ic;
 
     // Capitalize the id //
     $id = strtoupper ($id);
@@ -207,7 +199,12 @@ else
         if($mail-> Send())
         {
 
-            header ("Location: admin_success.php");
+            $_SESSION ['log_id'] = $_SESSION ['id'];
+            $_SESSION ['log_stuId'] = $id;
+            $_SESSION ['log_program'] = $program;
+            $_SESSION ['log_session'] = $session;
+
+            header ("Location: log_add_student.php");
 
         }
 

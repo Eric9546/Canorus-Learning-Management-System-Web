@@ -292,7 +292,14 @@
         $ref_table = "Class/" . $program . "/" . $subId . "/" . $uuid;
         $postRef_result = $database->getReference($ref_table)->set($postData);
 
-        header ("Location: edit_class.php");
+        $_SESSION ['log_id'] = $_SESSION ['id'];
+        $_SESSION ['log_program'] = $program;
+        $_SESSION ['log_subId'] = $subId;
+        $_SESSION ['log_day'] = $day;
+        $_SESSION ['log_timeStart'] = $timeStart;
+        $_SESSION ['log_timeEnd'] = $timeEnd;
+
+        header ("Location: log_add_class.php");
 
      }
 

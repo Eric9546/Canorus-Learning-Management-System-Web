@@ -12,7 +12,10 @@
     include ('dbcon.php');
 
     // Gathering the input from user //
-    $record_to_remove = $_POST ['record_to_remove'];   
+    $record_to_remove = $_POST ['record_to_remove'];
+    $subId = $_POST ['subId'];
+    $subName = $_POST ['subName'];
+    $program = $_POST ['program'];
 
     // Query to delele the record from the database table //
     $path = 'Subject/' . $record_to_remove;
@@ -22,7 +25,12 @@
     if ($reference)
     {
 
-       header ("Location: view_subject.php");     
+        $_SESSION ['log_id'] = $_SESSION ['id'];
+        $_SESSION ['log_subId'] = $subId;
+        $_SESSION ['log_subName'] = $subName;
+        $_SESSION ['log_program'] = $program;
+
+        header ("Location: log_remove_subject.php");
 
     }
 

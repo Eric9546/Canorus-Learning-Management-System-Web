@@ -13,9 +13,9 @@
      // Ensure that the user is logged in //
      if (!isset ($_SESSION ['id']))
      {
-              
+
         header ("Location: login.php");
-                    
+
      }
 
      else
@@ -65,19 +65,23 @@
 
              // Inserting the data into the database table //
             $postData = [
-    
+
                             'progName' => $progName,
                             'progCode' => $progCode,
-                  
+
                         ];
 
             $ref_table = "Program/" . $progCode;
             $postRef_result = $database->getReference($ref_table)->set($postData);
 
-            header ("Location: admin_success.php");
-   
+            $_SESSION ['log_id'] = $_SESSION ['id'];
+            $_SESSION ['log_progName'] = $progName;
+            $_SESSION ['log_progCode'] = $progCode;
+
+            header ("Location: log_add_program.php");
+
         }
-   
+
      }
 
 ?>

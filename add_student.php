@@ -102,17 +102,7 @@ if ($value ['access_level'] !== "Registry" && $value ['access_level'] !== "Admin
 
             <form action="add_student_execute.php" method="post">
               
-              <div class="p-3 p-lg-5 border">
-                <div class="form-group row">
-                  <div class="col-md-6">
-                    <label for="text" class="text-black">User ID <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="id" name="id" placeholder="User ID" required>
-                  </div>
-                  <div class="col-md-6">
-                    <label for="text" class="text-black">Password <span class="text-danger">*</span></label>
-                    <input type="password" class="form-control" id="pass" name="password" placeholder="Password" required>
-                  </div>
-                </div>
+              <div class="p-3 p-lg-5 border">            
                 <div class="form-group row">
                   <div class="col-md-6">
                     <label for="c_email" class="text-black">Access Level <span class="text-danger">*</span></label>

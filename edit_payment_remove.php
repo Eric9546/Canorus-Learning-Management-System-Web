@@ -4,9 +4,9 @@
 
     if (!isset ($_SESSION ['id']))
     {
-        
+
         header ("Location: login.php");
-              
+
     }
 
     // Declaring function for alert message //
@@ -30,7 +30,7 @@
     unset ($_SESSION ['program']);
     unset ($_SESSION ['session']);
     $_SESSION ['program'] = $program;
-    $_SESSION ['session'] = $session;  
+    $_SESSION ['session'] = $session;
 
     // Query to delete the record from the database table //
     $path = $record_to_remove;
@@ -39,37 +39,42 @@
     // Remove the file //
     $bucket = $storage->bucket('canorus-18990.appspot.com');
     $object = $bucket->object($filename);
- 
+
     $object->delete();
 
     // Updating the data in the enrolment table //
     $updateData = [
-    
+
                     'payStatus' => 'Unpaid',
-                    
+
                 ];
 
     $ref_table = "Enrolment/" . $id;
     $updateQuery = $database->getReference($ref_table)->getValue();
     foreach ($updateQuery as $key => $rows)
     {
-        
+
         if ($rows ['session'] == $session )
         {
-        
+
             $path = "Enrolment/" . $id . "/" . $key;
             $updateQuery = $database->getReference($path)->update($updateData);
 
 
         }
-       
+
     }
 
     // Logic to check if the record was deleted successfully //
     if ($reference)
     {
 
-       header ("Location: edit_payment.php");     
+        $_SESSION ['log_id'] = $_SESSION ['id'];
+        $_SESSION ['log_stuId'] = $id;
+        $_SESSION ['log_session'] = $session;
+        $_SESSION ['log_program'] = $program;
+
+        header ("Location: log_remove_payment.php");
 
     }
 

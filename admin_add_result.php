@@ -13,9 +13,9 @@
      // Ensure that the user is logged in //
      if (!isset ($_SESSION ['id']))
      {
-              
+
         header ("Location: login.php");
-                    
+
      }
 
      else
@@ -26,8 +26,8 @@
 
         // Gathering the user input //
         $id = $_POST ['id'];
-        $subId = $_POST ['subId']; 
-        $grade = $_POST ['grade'];      
+        $subId = $_POST ['subId'];
+        $grade = $_POST ['grade'];
         $program = $_POST ['program'];
         $session = $_POST ['session'];
         $date = date ("d/m/Y");
@@ -63,10 +63,10 @@
         // Logic to check if the ID already exists //
         if (!is_null ($value))
         {
-        
+
             alert ("This Subject Already Has Results!");
 
-        }   
+        }
 
         // Get subject data //
         $path = 'Subject/' . $subId;
@@ -75,10 +75,10 @@
         $value = $snapshot->getValue();
 
         $subName = $value ['subName'];
- 
+
         // Inserting the data into the database table //
         $postData = [
-    
+
                             'id' => $id,
                             'subId' => $subId,
                             'subName' => $subName,
@@ -86,7 +86,7 @@
                             'session' => $session,
                             'grade' => $grade,
                             'date' => $date,
-                            
+
                         ];
 
             $ref_table = "Result/" . $id . "/" . $subId;
@@ -94,9 +94,15 @@
 
 
         $_SESSION ['record_to_view'] = $id;
-        header ("Location: edit_result_student.php");
+        $_SESSION ['log_id'] = $_SESSION ['id'];
+        $_SESSION ['log_stuId'] = $id;
+        $_SESSION ['log_grade'] = $grade;
+        $_SESSION ['log_program'] = $program;
+        $_SESSION ['log_subId'] = $subId;
 
-        
+        header ("Location: log_add_result.php");
+
+
      }
-     
+
 ?>

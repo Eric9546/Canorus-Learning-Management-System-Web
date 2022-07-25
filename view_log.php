@@ -193,7 +193,16 @@
 
                         <option value="LOGIN">Login</option>
                         <option value="PAYMENT">Payment</option>
+                        <option value="STAFF">Staff</option>
+                        <option value="LECTURER">Lecturer</option>
+                        <option value="SUBJECT">Subject</option>
+                        <option value="CLASS">Class</option>
+                        <option value="RESULT">Result</option>
+                        <option value="PROGRAM">Program</option>
+                        <option value="SESSION">Session</option>
                         <option value="DETAILS">Student Details</option>
+                        <option value="ASSIGNMENT">Student Assignment</option>
+                        <option value="ATTENDANCE">Student Attendance</option>                       
 
                       </select>
                   </div>

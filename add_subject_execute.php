@@ -13,9 +13,9 @@
      // Ensure that the user is logged in //
      if (!isset ($_SESSION ['id']))
      {
-              
+
         header ("Location: login.php");
-                    
+
      }
 
      else
@@ -28,7 +28,7 @@
         $subId = $_POST ['subId'];
         $subName = $_POST ['subName'];
         $program = $_POST ['program'];
-        $fee = $_POST ['fee'];       
+        $fee = $_POST ['fee'];
         $lecId = $_POST ['lecId'];
         $section = $_POST ['section'];
 
@@ -67,7 +67,7 @@
             alert ("Error Please Check Your Fee!");
 
         }
-     
+
         else if (empty ($lecId))
         {
 
@@ -83,8 +83,8 @@
         }
 
         // Capitalize the variables //
-        $subId = strtoupper ($subId);  
-        $section = strtoupper ($section);  
+        $subId = strtoupper ($subId);
+        $section = strtoupper ($section);
 
         // Query to check if ID already exists //
         $path = 'Subject/' . $subId;
@@ -95,7 +95,7 @@
         // Logic to check if the ID already exists //
         if (!is_null ($value))
         {
-         
+
             alert ("Subject ID Already Exists!");
 
         }
@@ -105,23 +105,28 @@
 
             // Inserting the data into the database table //
             $postData = [
-    
+
                             'subId' => $subId,
                             'subName' => $subName,
                             'program' => $program,
-                            'fee' => $fee,                           
-                            'lecId' => $lecId,  
-                            'section' => $section,                
-                            
+                            'fee' => $fee,
+                            'lecId' => $lecId,
+                            'section' => $section,
+
                         ];
 
             $ref_table = "Subject/" . $subId;
             $postRef_result = $database->getReference($ref_table)->set($postData);
 
-            header ("Location: admin_success.php");
-            
+            $_SESSION ['log_id'] = $_SESSION ['id'];
+            $_SESSION ['log_subId'] = $subId;
+            $_SESSION ['log_subName'] = $subName;
+            $_SESSION ['log_program'] = $program;
+
+            header ("Location: log_add_subject.php");
+
         }
-   
+
      }
-     
+
 ?>

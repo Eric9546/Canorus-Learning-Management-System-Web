@@ -13,9 +13,9 @@
      // Ensure that the user is logged in //
      if (!isset ($_SESSION ['id']))
      {
-              
+
         header ("Location: login.php");
-                    
+
      }
 
      else
@@ -28,7 +28,7 @@
         $lecId = $_POST ['lecId'];
         $name = $_POST ['name'];
         $email = $_POST ['email'];
-        $telno = $_POST ['telno'];      
+        $telno = $_POST ['telno'];
 
         // Validating the input //
         if (empty ($lecId))
@@ -74,7 +74,7 @@
         }
 
         // Capitalize the id //
-        $lecId = strtoupper ($lecId);  
+        $lecId = strtoupper ($lecId);
 
        // Query to check if ID already exists //
         $path = 'Lecturer/' . $lecId;
@@ -89,27 +89,30 @@
             alert ("Lecturer ID Already Exists!");
 
         }
-        
+
         else
         {
 
              // Inserting the data into the database table //
             $postData = [
-    
+
                             'lecId' => $lecId,
                             'name' => $name,
                             'email' => $email,
                             'telno' => $telno,
-                            
+
                         ];
 
             $ref_table = "Lecturer/" . $lecId;
             $postRef_result = $database->getReference($ref_table)->set($postData);
 
-            header ("Location: admin_success.php");
-            
+            $_SESSION ['log_id'] = $_SESSION ['id'];
+            $_SESSION ['log_lecId'] = $lecId;
+
+            header ("Location: log_add_lecturer.php");
+
         }
-   
+
      }
-     
+
 ?>

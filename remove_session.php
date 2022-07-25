@@ -4,9 +4,9 @@
 
     if (!isset ($_SESSION ['id']))
     {
-        
+
         header ("Location: login.php");
-              
+
     }
 
     // Declaring function for alert message //
@@ -21,7 +21,7 @@
     include ('dbcon.php');
 
     // Gathering the input from user //
-    $record_to_remove = $_POST ['record_to_remove'];   
+    $record_to_remove = $_POST ['record_to_remove'];
 
     // Query to delele the record from the database table //
     $path = 'Session/' . $record_to_remove;
@@ -31,7 +31,10 @@
     if ($reference)
     {
 
-       header ("Location: admin_success.php");     
+        $_SESSION ['log_id'] = $_SESSION ['id'];
+        $_SESSION ['log_session'] = $record_to_remove;
+
+        header ("Location: log_remove_session.php");
 
     }
 

@@ -14,7 +14,7 @@
 
     $collection = $firestore->collection($logDate . "-DETAILS");
     $log = $collection->document(uniqid());
-    $logMsg = "User with the ID: " . $id . " updated their personal details at ". $logTime ." HRS using the " . "WEB" . " platform";
+    $logMsg = "Student with the ID: " . $id . " updated their personal details at ". $logTime ." HRS using the " . "WEB" . " platform";
     $log->set(['logMsg' => $logMsg]);
 
     header ("Location: user_success.php");

@@ -260,6 +260,7 @@
                             <input type="hidden" name="record_to_remove" value="<?php echo $record_to_remove; ?>" />
                             <input type="hidden" name="record_to_remove2" value="<?php echo $record_to_remove2; ?>" />
                             <input type="hidden" name="subId" value="<?php echo $subId; ?>" />
+                            <input type="hidden" name="assignTitle" value="<?php echo $rows ['assignTitle']; ?>" />
                             <input type="hidden" name="fileName" value="<?php echo $rows ['fileName']; ?>" />
                             <input type="submit" name="delete" value="Delete" class="btn btn-primary btn-lg btn-block"/>
 

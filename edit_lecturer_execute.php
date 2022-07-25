@@ -4,9 +4,9 @@
 
     if (!isset ($_SESSION ['id']))
     {
-        
+
         header ("Location: login.php");
-              
+
     }
 
     // Declaring function for alert message //
@@ -24,7 +24,7 @@
     $record_to_edit = $_POST ['record_to_edit'];
     $name = $_POST ['name'];
     $email = $_POST ['email'];
-    $telno = $_POST ['telno'];  
+    $telno = $_POST ['telno'];
 
     $path = 'Lecturer/' . $record_to_edit;
     $reference = $database->getReference($path);
@@ -35,7 +35,7 @@
     {
 
         $name = $value ['name'];
-        
+
     }
 
     if ($email == NULL)
@@ -57,17 +57,20 @@
     $reference = $database->getReference($path)->remove();
 
     $postData = [
-    
+
                     'lecId' => $record_to_edit,
                     'name' => $name,
                     'email' => $email,
                     'telno' => $telno,
-                            
+
                 ];
 
     $ref_table = "Lecturer/" . $record_to_edit;
     $postRef_result = $database->getReference($ref_table)->set($postData);
 
-    header ('Location:view_lecturer.php');
+    $_SESSION ['log_id'] = $_SESSION ['id'];
+    $_SESSION ['log_lecId'] = $record_to_edit;
+
+    header ('Location:log_edit_lecturer.php');
 
 ?>

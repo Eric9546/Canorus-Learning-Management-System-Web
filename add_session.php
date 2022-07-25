@@ -13,9 +13,9 @@
      // Ensure that the user is logged in //
      if (!isset ($_SESSION ['id']))
      {
-              
+
         header ("Location: login.php");
-                    
+
      }
 
      else
@@ -25,7 +25,7 @@
         include ('dbcon.php');
 
         // Gathering the user input //
-        $session = $_POST ['session'];   
+        $session = $_POST ['session'];
 
         // Validating the input //
         if (empty ($session))
@@ -36,7 +36,7 @@
         }
 
         // Capitalize the session //
-        $session = strtoupper ($session);     
+        $session = strtoupper ($session);
 
         // Query to check if session already exists //
         $path = 'Session/' . $session;
@@ -57,18 +57,21 @@
 
            // Inserting the data into the database table //
            $postData = [
-    
+
                             'session' => $session,
-                            
+
                         ];
 
             $ref_table = "Session/" . $session;
             $postRef_result = $database->getReference($ref_table)->set($postData);
 
-            header ("Location: admin_success.php");
-            
+            $_SESSION ['log_id'] = $_SESSION ['id'];
+            $_SESSION ['log_session'] = $session;
+
+            header ("Location: log_add_session.php");
+
         }
-   
+
      }
 
 ?>

@@ -54,7 +54,12 @@ if ($value ['attendPin'] == $attendPin)
     $ref_table = $record_to_view;
     $updateQuery = $database->getReference($ref_table)->update($updateData);
 
-    header ("Location: student_attendance.php");
+    $_SESSION ['log_id'] = $id;
+    $_SESSION ['log_program'] = $program;
+    $_SESSION ['log_session'] = $session;
+    $_SESSION ['log_subId'] = $subId;
+
+    header ("Location: log_student_attendance.php");
 
 }
 

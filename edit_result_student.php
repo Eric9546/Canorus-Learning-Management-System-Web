@@ -370,7 +370,10 @@
                             </select>
 
                             <input type="hidden" name="record_to_view" value="<?php echo $record_to_view; ?>">
-                            <input type="hidden" name="record_to_edit" value="<?php echo $record_to_edit; ?>" />                           
+                            <input type="hidden" name="record_to_edit" value="<?php echo $record_to_edit; ?>" />
+                            <input type="hidden" name="stuId" value="<?php echo $record_to_view; ?>" />
+                            <input type="hidden" name="program" value="<?php echo $rows ['program']; ?>" />
+                            <input type="hidden" name="subId" value="<?php echo $rows ['subId']; ?>" />
                             <input type="submit" name="edit" value="Edit" class="btn btn-primary height-auto btn-sm"/>
 
                         </form>
@@ -388,7 +391,10 @@
                         <form action="remove_result.php" method="post">
 
                             <input type="hidden" name="record_to_view" value="<?php echo $record_to_view; ?>">
-                            <input type="hidden" name="record_to_remove" value="<?php echo $record_to_remove; ?>" />                           
+                            <input type="hidden" name="record_to_remove" value="<?php echo $record_to_remove; ?>" /> 
+                            <input type="hidden" name="stuId" value="<?php echo $record_to_view; ?>" />
+                            <input type="hidden" name="program" value="<?php echo $rows ['program']; ?>" />
+                            <input type="hidden" name="subId" value="<?php echo $rows ['subId']; ?>" />
                             <input type="submit" name="delete" value="X" class="btn btn-primary height-auto btn-sm"/>
 
                         </form>

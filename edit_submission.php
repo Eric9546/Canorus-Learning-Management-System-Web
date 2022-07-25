@@ -282,6 +282,7 @@
                             <input type="hidden" name="record_to_update" value="<?php echo $record_to_update; ?>" />
                             <input type="hidden" name="record_to_view" value="<?php echo $path; ?>" />
                             <input type="hidden" name="subId" value="<?php echo $subId; ?>" />
+                            <input type="hidden" name="stuId" value="<?php echo $rows ['id']; ?>" />
                             <input type="hidden" name="assignTitle" value="<?php echo $assignTitle; ?>" />
                             <br />
                             <input type="submit" name="update" value="Update" class="btn btn-primary btn-lg btn-block"/>   
@@ -319,6 +320,7 @@
                             <input type="hidden" name="record_to_view" value="<?php echo $path; ?>" />
                             <input type="hidden" name="subId" value="<?php echo $subId; ?>" />
                             <input type="hidden" name="assignTitle" value="<?php echo $assignTitle; ?>" />
+                            <input type="hidden" name="stuId" value="<?php echo $rows ['id']; ?>" />
                             <input type="hidden" name="fileName" value="<?php echo $rows ['fileName']; ?>" />
                             <input type="submit" name="delete" value="Delete" class="btn btn-primary btn-lg btn-block"/>
 

@@ -29,6 +29,7 @@
         $record_to_update = $_POST ['record_to_update'];
         $record_to_view = $_POST ['record_to_view'];
         $subId = $_POST ['subId'];
+        $stuId = $_POST ['stuId'];
         $assignTitle = $_POST ['assignTitle'];
         $_SESSION ['record_to_view'] = $record_to_view;
         $_SESSION ['subId'] = $subId;
@@ -53,7 +54,13 @@
         $ref_table = $record_to_update;
         $updateQuery = $database->getReference($ref_table)->update($updateData);
 
-        header ("Location: edit_submission.php");
+        $_SESSION ['log_id'] = $_SESSION ['id'];
+        $_SESSION ['log_stuId'] = $stuId;
+        $_SESSION ['log_grade'] = $grade;
+        $_SESSION ['log_subId'] = $subId;
+        $_SESSION ['log_assignTitle'] = $assignTitle;
+
+        header ("Location: log_update_grade.php");
 
      }
 

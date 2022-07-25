@@ -219,7 +219,10 @@
 
                         <form action="remove_subject.php" method="post">
 
-                            <input type="hidden" name="record_to_remove" value="<?php echo $record_to_remove; ?>" />                           
+                            <input type="hidden" name="record_to_remove" value="<?php echo $record_to_remove; ?>" /> 
+                            <input type="hidden" name="subId" value="<?php echo $rows ['subId']; ?>" />
+                            <input type="hidden" name="subName" value="<?php echo $rows ['subName']; ?>" />
+                            <input type="hidden" name="program" value="<?php echo $rows ['program']; ?>" />
                             <input type="submit" name="delete" value="Remove" class="btn btn-primary btn-lg btn-block"/>
 
                         </form>

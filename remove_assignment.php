@@ -26,6 +26,7 @@
     $record_to_remove2 = $_POST ['record_to_remove2'];
     $fileName =  $_POST ['fileName'];
     $subId = $_POST ['subId'];
+    $assignTitle = $_POST ['assignTitle'];
     $_SESSION ['subId'] = $subId;
 
     // Query to delete the record from the database table //
@@ -63,7 +64,11 @@
     if ($reference)
     {
 
-       header ("Location: view_assignment_filtered.php");
+        $_SESSION ['log_id'] = $_SESSION ['id'];
+        $_SESSION ['log_subId'] = $subId;
+        $_SESSION ['log_assignTitle'] = $assignTitle;
+
+        header ("Location: log_remove_assignment.php");
 
     }
 

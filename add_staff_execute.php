@@ -13,9 +13,9 @@
      // Ensure that the user is logged in //
      if (!isset ($_SESSION ['id']))
      {
-              
+
         header ("Location: login.php");
-                    
+
      }
 
      else
@@ -122,7 +122,7 @@
         }
 
         // Capitalize the id //
-        $id = strtoupper ($id);     
+        $id = strtoupper ($id);
 
         // Query to check if ID already exists //
         $path = 'Registration/' . $id;
@@ -137,13 +137,13 @@
             alert ("Staff ID Already Exists!");
 
         }
-        
+
         else
         {
 
              // Inserting the data into the database table //
             $postData = [
-    
+
                             'id' => $id,
                             'password' => $password,
                             'access_level' => $access_level,
@@ -155,16 +155,20 @@
                             'program' => $program,
                             'session' => $session,
 
-                            
+
                         ];
 
             $ref_table = "Registration/" . $id;
             $postRef_result = $database->getReference($ref_table)->set($postData);
 
-            header ("Location: admin_success.php");
-            
+            $_SESSION ['log_id'] = $_SESSION ['id'];
+            $_SESSION ['log_newId'] = $id;
+            $_SESSION ['log_access_level'] = $access_level;
+
+            header ("Location: log_add_staff.php");
+
         }
-   
+
      }
 
 ?>
