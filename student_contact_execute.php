@@ -92,7 +92,7 @@
 
         $mail -> Subject = "Student Message";
 
-        $mail -> setFrom ("postmaster@sandbox9a189234a5e64ef0a823c2cf47daaeba.mailgun.org", "Canorus Management System");
+        $mail -> setFrom ("postmaster@sandbox9a189234a5e64ef0a823c2cf47daaeba.mailgun.org", "Canorus Learning Management System");
 
         $mail -> Body = ("This Is To Inform You That The Following Student Sent A Message To You.
         Student ID: $studentId 

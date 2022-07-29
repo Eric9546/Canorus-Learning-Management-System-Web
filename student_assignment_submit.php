@@ -158,7 +158,7 @@
                   <tr>
                     <td>
                      
-                        <a href="<?php echo 'https://storage.googleapis.com/canorus-18990.appspot.com/' . $value ['fileName']; ?>" target="_blank" class="btn btn-primary btn-lg btn-block">View</></a>
+                        <a href="<?php echo 'https://firebasestorage.googleapis.com/v0/b/canorus-18990.appspot.com/o/' . $value ['fileName'] . '?alt=media&'; ?>" target="_blank" class="btn btn-primary btn-lg btn-block">View</></a>
 
                     </td>                  
 
@@ -217,7 +217,7 @@
                     <td><?php echo $value2 ['comment']; ?></td>
                     <td>
                      
-                        <a href="<?php echo 'https://storage.googleapis.com/canorus-18990.appspot.com/' . $value2 ['fileName']; ?>" target="_blank" class="btn btn-primary btn-lg btn-block">View</></a>
+                        <a href="<?php echo 'https://firebasestorage.googleapis.com/v0/b/canorus-18990.appspot.com/o/' . $value2 ['fileName'] . '?alt=media&'; ?>" target="_blank" class="btn btn-primary btn-lg btn-block">View</></a>
 
                     </td>
                       
