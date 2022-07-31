@@ -13,9 +13,9 @@
      // Ensure that the user is logged in //
      if (!isset ($_SESSION ['id']))
      {
-              
+
         header ("Location: login.php");
-                    
+
      }
 
      else
@@ -26,7 +26,7 @@
 
         // Gathering the user input //
         $id = $_POST ['id'];
-        $subject = $_POST ['subject'];       
+        $subject = $_POST ['subject'];
         $payStatus = $_POST ['payStatus'];
         $program = $_POST ['program'];
         $session = $_POST ['session'];
@@ -75,17 +75,16 @@
         }
 
         // Check for clashes //
-        $clash = "False";
         $path = 'Class/' . $program . "/" . $subId;
         $reference = $database->getReference($path);
         $snapshot = $reference->getSnapshot();
 
         $reference = $database->getReference($path)->getValue();
-                    
+
         foreach ($reference as $key => $rows)
         {
 
-            if ($rows ['section'] == $section)
+            if (str_contains ($rows ['section'], $section))
             {
 
                 $path2 = 'Enrolment/' . $id;
@@ -96,10 +95,10 @@
 
                 foreach ($reference2 as $key2 => $rows2)
                 {
-                    
+
                     if ($rows2 ['subId'] !== $subId)
-                    {           
-                    
+                    {
+
                         $path3 = 'Class/' . $program. "/" . $rows2 ['subId'];
                         $reference3 = $database->getReference($path3);
                         $snapshot3 = $reference3->getSnapshot();
@@ -109,27 +108,34 @@
                         foreach ($reference3 as $key3 => $rows3)
                         {
 
-                            if ($rows ['day'] == $rows3 ['day'])
+                            if (str_contains ($rows3 ['section'], $rows2 ['section']))
                             {
-           
-                                if ($rows ['timeStartIndex'] >= $rows3 ['timeStartIndex'] && $rows ['timeStartIndex'] < $rows3 ['timeEndIndex'])
-                                {
-                    
-                                    $clash = "True";
 
-                                }
-
-                                else if ($rows ['timeStartIndex'] > $rows3 ['timeStartIndex'] && $rows ['timeStartIndex'] <= $rows3 ['timeEndIndex'])
+                                if ($rows ['day'] == $rows3 ['day'])
                                 {
 
-                                    $clash = "True";
+                                    if ($rows ['timeStartIndex'] >= $rows3 ['timeStartIndex'] && $rows ['timeStartIndex'] < $rows3 ['timeEndIndex'])
+                                    {
 
-                                }
+                                        alert ("Class Clash!");
+                                        exit(0);
 
-                                else
-                                {
-                                
-                                    $clash = "False";
+                                    }
+
+                                    else if ($rows ['timeStartIndex'] > $rows3 ['timeStartIndex'] && $rows ['timeStartIndex'] <= $rows3 ['timeEndIndex'])
+                                    {
+
+                                        alert ("Class Clash!");
+                                        exit(0);
+
+                                    }
+
+                                    else
+                                    {
+
+
+
+                                    }
 
                                 }
 
@@ -145,14 +151,6 @@
 
         }
 
-        if ($clash == "True")
-        {
-
-            alert ("Class Clash!");
-            exit(0);
-
-        }
-
         // Get data from subject table //
         $path = 'Subject/' . $subId;
         $reference = $database->getReference($path);
@@ -160,7 +158,7 @@
         $value = $snapshot->getValue();
 
         $subName = $value ['subName'];
-        $fee = $value ['fee'];        
+        $fee = $value ['fee'];
         $lecId = $value ['lecId'];
 
         // Get data from lecturer table //
@@ -173,7 +171,7 @@
 
         // Inserting the data into the database table //
         $postData = [
-    
+
                             'id' => $id,
                             'subId' => $subId,
                             'subName' => $subName,
@@ -184,14 +182,14 @@
                             'date' => $date,
                             'section' => $section,
                             'lecName' => $lecName,
-                            
+
                         ];
 
             $ref_table = "Enrolment/" . $id . "/" . $subId;
             $postRef_result = $database->getReference($ref_table)->set($postData);
 
             header ("Location: student_enrolment.php");
-   
+
      }
-     
+
 ?>
