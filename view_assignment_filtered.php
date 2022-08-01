@@ -189,7 +189,7 @@
                     <div class="col-md-12">
                        
                         <input type="hidden" name="subId" value="<?php echo $subId; ?>" />                         
-                        <input type="submit" class="btn btn-primary btn-lg btn-block" value="Add New Assigment">
+                        <input type="submit" class="btn btn-primary btn-lg btn-block" value="Add New Assignment">
 
                     </div>
             
