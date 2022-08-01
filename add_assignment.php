@@ -246,7 +246,7 @@
 
                 <div class="form-group row">
                   <div class="col-lg-12">
-                    <label for="text" class="text-black">Attach Assigment File <span class="text-danger">*</span></label>
+                    <label for="text" class="text-black">Attach Assignment File <span class="text-danger">*</span></label>
                     <input type="file" class="btn btn-primary btn-lg btn-block" name="myfile" required>
                   </div>
                 </div>
@@ -254,7 +254,7 @@
                 <div class="form-group row">
                   <div class="col-lg-12">
                     <input type="hidden" name="subId" value="<?php echo $subId; ?>" />
-                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="Add Assigment">
+                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="Add Assignment">
                   </div>
                 </div>
               </div>
