@@ -40,7 +40,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Add Program/Session</title>
+    <title>Remove Program/Session</title>
     <?php include('header.php'); ?>
     
   </head>
