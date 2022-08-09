@@ -108,7 +108,7 @@
                     <input type="text" class="form-control" id="id" name="progCode" placeholder="Program Code" required>
                   </div>
                   <div class="col-md-6">
-                    <label for="text" class="text-black">Program name <span class="text-danger">*</span></label>
+                    <label for="text" class="text-black">Program Name <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" id="id" name="progName" placeholder="Program Name" required>
                   </div>
                 </div>
