@@ -68,6 +68,18 @@
     $ref_table = "Lecturer/" . $record_to_edit;
     $postRef_result = $database->getReference($ref_table)->set($postData);
 
+    // Update the registration database table //
+    $updateData = [
+
+                    'name' => $name,
+                    'email' => $email,
+                    'telno' => $telno,
+
+                ];
+
+    $ref_table = "Registration/" . $record_to_edit;
+    $updateQuery = $database->getReference($ref_table)->update($updateData);
+
     $_SESSION ['log_id'] = $_SESSION ['id'];
     $_SESSION ['log_lecId'] = $record_to_edit;
 

@@ -136,8 +136,7 @@
                     <th>Name</th>
                     <th>Email</th>
                     <th>Phone Number</th>                 
-                    <th>Edit</th>
-                    <th>Remove</th>
+                    <th>Edit</th>                   
                   </tr>
                 </thead>
                 <tbody>
@@ -201,23 +200,7 @@
                         </form>
 
                     </td>
-
-                    <td>
-
-                        <?php
-
-                            $record_to_remove = $rows ['lecId'];
-                           
-                        ?>
-
-                        <form action="remove_lecturer.php" method="post">
-
-                            <input type="hidden" name="record_to_remove" value="<?php echo $record_to_remove; ?>" />                           
-                            <input type="submit" name="delete" value="Remove" class="btn btn-primary btn-lg btn-block"/>
-
-                        </form>
-
-                    </td>
+                   
                   </tr>
 
                     <?php

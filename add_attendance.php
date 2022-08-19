@@ -78,6 +78,131 @@
 
         }
 
+        function timeStartIndex ($timeStart)
+        {
+
+            if ($timeStart == "8:00am")
+            {
+                $index = 8;
+            }
+
+            else if ($timeStart == "9:00am")
+            {
+                $index = 9;
+            }
+
+            else if ($timeStart == "10:00am")
+            {
+                $index = 10;
+            }
+
+            else if ($timeStart == "11:00am")
+            {
+                $index = 11;
+            }
+
+            else if ($timeStart == "12:00pm")
+            {
+                $index = 12;
+            }
+
+            else if ($timeStart == "1:00pm")
+            {
+                $index = 13;
+            }
+
+            else if ($timeStart == "2:00pm")
+            {
+                $index = 14;
+            }
+
+            else if ($timeStart == "3:00pm")
+            {
+                $index = 15;
+            }
+
+            else if ($timeStart == "4:00pm")
+            {
+                $index = 16;
+            }
+
+            else if ($timeStart == "5:00pm")
+            {
+                $index = 17;
+            }
+
+            return $index;
+
+        }
+
+        function timeEndIndex ($timeEnd)
+        {
+
+            if ($timeEnd == "9:00am")
+            {
+                $index = 9;
+            }
+
+            else if ($timeEnd == "10:00am")
+            {
+                $index = 10;
+            }
+
+            else if ($timeEnd == "11:00am")
+            {
+                $index = 11;
+            }
+
+            else if ($timeEnd == "12:00pm")
+            {
+                $index = 12;
+            }
+
+            else if ($timeEnd == "1:00pm")
+            {
+                $index = 13;
+            }
+
+            else if ($timeEnd == "2:00pm")
+            {
+                $index = 14;
+            }
+
+            else if ($timeEnd == "3:00pm")
+            {
+                $index = 15;
+            }
+
+            else if ($timeEnd == "4:00pm")
+            {
+                $index = 16;
+            }
+
+            else if ($timeEnd == "5:00pm")
+            {
+                $index = 17;
+            }
+
+            else if ($timeEnd == "6:00pm")
+            {
+                $index = 18;
+            }
+
+            return $index;
+
+        }
+
+        $timeStartIndex = timeStartIndex ($timeStart);
+        $timeEndIndex = timeEndIndex ($timeEnd);
+
+        if ($timeEndIndex <= $timeStartIndex)
+        {
+
+            alert ("End Time Cannot Be Earlier Or Equal To Start Time!");
+            exit (0);
+
+        }
+
         // Query to check if attendance item already exists //
         $path = 'Attendance/' . $session . '/' . $subId . '/' . $section . '/' . $classDateTime;
         $reference = $database->getReference($path);

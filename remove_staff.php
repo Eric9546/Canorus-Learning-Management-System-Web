@@ -20,6 +20,9 @@
     $path = 'Registration/' . $record_to_remove;
     $reference = $database->getReference($path)->remove();
 
+    $path = 'Lecturer/' . $record_to_remove;
+    $reference = $database->getReference($path)->remove();
+
     // Logic to check if the record was deleted successfully //
     if ($reference)
     {

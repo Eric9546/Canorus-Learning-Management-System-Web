@@ -9,9 +9,8 @@
                     </li>
                      <li class="has-children ">
                         <a href="#">Lecturer</a>
-                        <ul class="dropdown">
-                            <li><a href="add_lecturer.php">Add Lecturer</a></li>
-                            <li><a href="view_lecturer.php">Edit/Remove Lecturer</a></li>
+                        <ul class="dropdown">                        
+                            <li><a href="view_lecturer.php">Edit Lecturer</a></li>
                             <li><a href="view_lecturer_timetable.php">View Lecturer Timetable</a></li>
                         </ul>
                     </li>

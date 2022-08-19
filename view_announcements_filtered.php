@@ -191,12 +191,12 @@ if ($value ['access_level'] !== "Lecturer")
                         <br />
 
                         <label for="text" class="text-black">Announcement Title<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="id" name="announceTitle" placeholder="Announcement Title" required>
+                        <input type="text" class="form-control" id="id" name="announceTitle" placeholder="Announcement Title" size="50" required>
                                             
                         <br />
 
                         <label for="text" class="text-black">Announcement Details<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="id" name="announceDetail" placeholder="Announcement Details" required>
+                        <input type="text" class="form-control" id="id" name="announceDetail" placeholder="Announcement Details" size="50" required>
                                             
                         <br />
 

@@ -106,9 +106,8 @@
           <div class="col-lg-4 col-md-6 item-entry mb-4">
             <a href="#" class="product-item md-height bg-gray d-block" style="height:300px; width:300px">
               <img src="images/function8.png" alt="Image" class="img-fluid" height="250" width="250">
-            </a>
-            <h5 class="item-price"><a href="add_lecturer.php"><span class="icon-asterisk"> Add Lecturer</span></a></h5>
-            <h5 class="item-price"><a href="view_lecturer.php"><span class="icon-asterisk"> Edit/Remove Lecturer</span></a></h5>
+            </a>       
+            <h5 class="item-price"><a href="view_lecturer.php"><span class="icon-asterisk"> Edit Lecturer</span></a></h5>
               <h5 class="item-price"><a href="view_lecturer_timetable.php"><span class="icon-asterisk"> View Lecturer Timetable</span></a></h5>
             
           </div>

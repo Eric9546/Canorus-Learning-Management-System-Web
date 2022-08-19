@@ -161,6 +161,24 @@
             $ref_table = "Registration/" . $id;
             $postRef_result = $database->getReference($ref_table)->set($postData);
 
+            if ($access_level == "Lecturer")
+            {
+
+                // Update the lecturer table //
+                $postData = [
+
+                                'lecId' => $id,
+                                'name' => $name,
+                                'email' => $email,
+                                'telno' => $telno,
+
+                            ];
+
+                $ref_table = "Lecturer/" . $id;
+                $postRef_result = $database->getReference($ref_table)->set($postData);
+
+            }
+
             $_SESSION ['log_id'] = $_SESSION ['id'];
             $_SESSION ['log_newId'] = $id;
             $_SESSION ['log_access_level'] = $access_level;
