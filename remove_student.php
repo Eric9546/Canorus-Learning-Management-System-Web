@@ -28,7 +28,7 @@
     {
 
         $_SESSION ['log_id'] = $_SESSION ['id'];
-        $_SESSION ['log_stuId'] = $record_to_edit;
+        $_SESSION ['log_stuId'] = $record_to_remove;
         $_SESSION ['log_program'] = $program;
         $_SESSION ['log_session'] = $session;
 
