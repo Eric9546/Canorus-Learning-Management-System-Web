@@ -201,7 +201,7 @@ if ($value ['access_level'] !== "Registry" && $value ['access_level'] !== "Admin
                   </div> 
                 </div>
 
-                  <div class="form-group row">
+                <div class="form-group row">
                   <div class="col-md-12">
                     <label for="c_subject" class="text-black">Student Certification <span class="text-danger">*</span></label>
                     <input type="file" class="btn btn-primary btn-lg btn-block" name="myfile" required>
