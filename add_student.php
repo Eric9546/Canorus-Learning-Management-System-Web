@@ -100,7 +100,7 @@ if ($value ['access_level'] !== "Registry" && $value ['access_level'] !== "Admin
           </div>
           <div class="col-md-7">
 
-            <form action="add_student_execute.php" method="post">
+            <form action="add_student_execute.php" method="post" enctype="multipart/form-data">
               
               <div class="p-3 p-lg-5 border">            
                 <div class="form-group row">
@@ -200,6 +200,15 @@ if ($value ['access_level'] !== "Registry" && $value ['access_level'] !== "Admin
                     </select>
                   </div> 
                 </div>
+
+                  <div class="form-group row">
+                  <div class="col-md-12">
+                    <label for="c_subject" class="text-black">Student Certification <span class="text-danger">*</span></label>
+                    <input type="file" class="btn btn-primary btn-lg btn-block" name="myfile" required>
+                  </div>
+                
+                </div>
+
                 <div class="form-group row">
                   <div class="col-lg-12">
                     <input type="submit" class="btn btn-primary btn-lg btn-block" value="Add Student">

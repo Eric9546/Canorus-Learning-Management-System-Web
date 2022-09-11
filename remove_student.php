@@ -12,12 +12,20 @@
 
     // Establishing connection to database //
     include ('dbcon.php');
+    include ('storagecon.php');
 
     // Gathering the input from user //
     $record_to_remove = $_POST ['record_to_remove'];
     $stuId = $_POST ['stuId'];
     $program = $_POST ['program'];
     $session = $_POST ['session'];
+    $filename = $_POST ['filename'];
+
+    // Remove the file //
+    $bucket = $storage->bucket('canorus-18990.appspot.com');
+    $object = $bucket->object($filename);
+
+    $object->delete();
 
     // Query to delele the record from the database table //
     $path = 'Registration/' . $record_to_remove;

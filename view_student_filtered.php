@@ -151,6 +151,7 @@ if ($value ['access_level'] !== "Registry" && $value ['access_level'] !== "Admin
                                         <th>Address</th>
                                         <th>Program</th>
                                         <th>Session</th>
+                                        <th>View Certification</th>
                                         <th>Edit</th>
                                         <th>Remove</th>
                                     </tr>
@@ -228,6 +229,9 @@ if ($value ['access_level'] !== "Registry" && $value ['access_level'] !== "Admin
                                         <td>
                                             <?php echo $rows ['session']; ?>
                                         </td>
+                                        <td>
+                                            <a href="<?php echo 'https://firebasestorage.googleapis.com/v0/b/canorus-18990.appspot.com/o/' . $rows ['filename'] . '?alt=media&'; ?>" target="_blank" class="btn btn-primary btn-lg btn-block">View</></a>
+                                        </td>
 
                                         <td>
 
@@ -260,6 +264,7 @@ if ($value ['access_level'] !== "Registry" && $value ['access_level'] !== "Admin
                                                 <input type="hidden" name="stuId" value="<?php echo $rows ['id']; ?>" />
                                                 <input type="hidden" name="program" value="<?php echo $rows ['program']; ?>" />
                                                 <input type="hidden" name="session" value="<?php echo $rows ['session']; ?>" />
+                                                <input type="hidden" name="filename" value="<?php echo $rows ['filename']; ?>" />
                                                 <input type="submit" name="delete" value="Remove" class="btn btn-primary btn-lg btn-block" />
 
                                             </form>
