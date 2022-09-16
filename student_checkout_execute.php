@@ -86,6 +86,7 @@
                             'session' => $session,
                             'filename' => $newfilename,
                             'payStatus' => $payStatus,
+                            'payMode' => "Bank In",
                             
                         ];
 

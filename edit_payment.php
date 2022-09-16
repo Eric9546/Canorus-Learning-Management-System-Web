@@ -240,6 +240,7 @@
                     <th>Name</th>
                     <th>Program</th>
                     <th>Session</th>
+                    <th>Payment Mode</th>
                     <th>View Payment Statement</th>
                     <th>Payment Status</th>
                     <th>Approve Payment Status</th>
@@ -292,6 +293,7 @@
                     <td><?php echo $rows ['name']; ?></td>        
                     <td><?php echo $rows ['program']; ?></td>
                     <td><?php echo $rows ['session']; ?></td>
+                    <td><?php echo $rows ['payMode']; ?></td>
 
                     <td>
 

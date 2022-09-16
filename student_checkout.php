@@ -174,6 +174,11 @@
                         <input type="submit" class="btn btn-primary btn-lg btn-block" value="Upload Payment">
                     </div>
 
+                     <div class="col-lg-3">       
+                        <p style="visibility:hidden"><label for="c_subject" class="text-black"><span class="text-danger">*</span></label></p>
+                        <button class="btn btn-primary btn-lg btn-block" onclick="window.location='student_online_payment.php'">Online Payment</button>
+                    </div>
+
                     <div class="col-lg-3">       
                         <p style="visibility:hidden"><label for="c_subject" class="text-black"><span class="text-danger">*</span></label></p>
                         <button class="btn btn-primary btn-lg btn-block" onclick="window.location='index.php'">Cancel</button>
