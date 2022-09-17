@@ -303,7 +303,7 @@
                            
                         ?>
 
-                        <a href="<?php echo 'https://firebasestorage.googleapis.com/v0/b/canorus-18990.appspot.com/o/' . $rows ['filename'] . '?alt=media&'; ?>" target="_blank" class="btn btn-primary btn-lg btn-block">View</></a>
+                        <a href="<?php echo 'https://firebasestorage.googleapis.com/v0/b/canorus-18990.appspot.com/o/' . $rows ['filename'] . '?alt=media&'; ?>" target="_blank" class="btn btn-primary btn-lg btn-block"><span class="icon-open_in_new"></span></></a>
 
                     </td>
 
@@ -323,7 +323,7 @@
                             <input type="hidden" name="session" value="<?php echo $session; ?>">
                             <input type="hidden" name="id" value="<?php echo $rows ['id']; ?>" />
                             <input type="hidden" name="record_to_approve" value="<?php echo $record_to_approve; ?>" />
-                            <input type="submit" name="delete" value="Approve" class="btn btn-primary btn-lg btn-block"/>
+                            <button type="submit" name="view" value="" class="btn btn-primary btn-lg btn-block"><span class="icon-check"></span></button>
 
                         </form>
 
@@ -344,7 +344,7 @@
                             <input type="hidden" name="id" value="<?php echo $rows ['id']; ?>" />
                             <input type="hidden" name="record_to_remove" value="<?php echo $record_to_remove; ?>" />
                             <input type="hidden" name="filename" value="<?php echo $rows ['filename']; ?>" />
-                            <input type="submit" name="delete" value="Remove" class="btn btn-primary btn-lg btn-block"/>
+                            <button type="submit" name="view" value="" class="btn btn-primary btn-lg btn-block"><span class="icon-delete"></span></button>
 
                         </form>
 

@@ -314,7 +314,7 @@
                             <input type="hidden" name="day" value="<?php echo $rows ['day']; ?>" />
                             <input type="hidden" name="timeStart" value="<?php echo $rows ['timeStart']; ?>" />
                             <input type="hidden" name="timeEnd" value="<?php echo $rows ['timeEnd']; ?>" />
-                            <input type="submit" name="delete" value="Remove" class="btn btn-primary height-auto btn-sm"/>
+                            <button type="submit" name="view" value="" class="btn btn-primary btn-lg btn-block"><span class="icon-delete"></span></button>
 
                         </form>
                        

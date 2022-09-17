@@ -249,7 +249,7 @@
                     
                             <input type="hidden" name="contentName" value="<?php echo $rows ['contentName']; ?>" />
                             <input type="hidden" name="subId" value="<?php echo $subId; ?>" />
-                            <input type="submit" name="delete" value="Edit" class="btn btn-primary btn-lg btn-block"/>
+                            <button type="submit" name="view" value="" class="btn btn-primary btn-lg btn-block"><span class="icon-mode_edit"></span></button>
 
                         </form>
 
@@ -267,7 +267,7 @@
                     
                             <input type="hidden" name="record_to_remove" value="<?php echo $record_to_remove; ?>" />
                             <input type="hidden" name="subId" value="<?php echo $subId; ?>" />
-                            <input type="submit" name="delete" value="Delete" class="btn btn-primary btn-lg btn-block"/>
+                            <button type="submit" name="view" value="" class="btn btn-primary btn-lg btn-block"><span class="icon-delete"></span></button>
 
                         </form>
 

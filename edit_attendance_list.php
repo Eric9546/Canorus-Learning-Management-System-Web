@@ -295,7 +295,7 @@ if ($value ['access_level'] !== "Lecturer")
                             <input type='hidden' name='session' value='<?php echo $session; ?>' />
                             <input type='hidden' name='QRcode' value='<?php echo $QRcode; ?>' />
                             <input type='hidden' name='attendPin' value='<?php echo $attendPin; ?>' />
-                            <input type="submit" name="view" value="Set Present" class="btn btn-primary height-auto btn-sm"/>
+                            <button type="submit" name="view" value="" class="btn btn-primary btn-lg btn-block"><span class="icon-check"></span></button>
 
                         </form>
                        
@@ -320,7 +320,7 @@ if ($value ['access_level'] !== "Lecturer")
                               <input type='hidden' name='session' value='<?php echo $session; ?>' />
                               <input type='hidden' name='QRcode' value='<?php echo $QRcode; ?>' />
                               <input type='hidden' name='attendPin' value='<?php echo $attendPin; ?>' />
-                              <input type="submit" name="view" value="Set Absent" class="btn btn-primary height-auto btn-sm" />
+                            <button type="submit" name="view" value="" class="btn btn-primary btn-lg btn-block"><span class="icon-close"></span></button>
 
                           </form>
 

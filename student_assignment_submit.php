@@ -158,7 +158,7 @@
                   <tr>
                     <td>
                      
-                        <a href="<?php echo 'https://firebasestorage.googleapis.com/v0/b/canorus-18990.appspot.com/o/' . $value ['fileName'] . '?alt=media&'; ?>" target="_blank" class="btn btn-primary btn-lg btn-block">View</></a>
+                        <a href="<?php echo 'https://firebasestorage.googleapis.com/v0/b/canorus-18990.appspot.com/o/' . $value ['fileName'] . '?alt=media&'; ?>" target="_blank" class="btn btn-primary btn-lg btn-block"><span class="icon-open_in_new"></span></></a>
 
                     </td>                  
 

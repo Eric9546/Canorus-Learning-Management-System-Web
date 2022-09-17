@@ -279,7 +279,7 @@ if ($value ['access_level'] !== "Lecturer")
                             <input type="hidden" name="session" value="<?php echo $session; ?>" />
                             <input type="hidden" name="subId" value="<?php echo $subId; ?>" />
                             <input type="hidden" name="section" value="<?php echo $rows ['section']; ?>" />
-                            <input type="submit" name="view" value="Edit" class="btn btn-primary height-auto btn-sm"/>
+                            <button type="submit" name="view" value="" class="btn btn-primary btn-lg btn-block"><span class="icon-mode_edit"></span></button>
 
                         </form>
                        

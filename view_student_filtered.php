@@ -230,7 +230,7 @@ if ($value ['access_level'] !== "Registry" && $value ['access_level'] !== "Admin
                                             <?php echo $rows ['session']; ?>
                                         </td>
                                         <td>
-                                            <a href="<?php echo 'https://firebasestorage.googleapis.com/v0/b/canorus-18990.appspot.com/o/' . $rows ['filename'] . '?alt=media&'; ?>" target="_blank" class="btn btn-primary btn-lg btn-block">View</></a>
+                                            <a href="<?php echo 'https://firebasestorage.googleapis.com/v0/b/canorus-18990.appspot.com/o/' . $rows ['filename'] . '?alt=media&'; ?>" target="_blank" class="btn btn-primary btn-lg btn-block"><span class="icon-open_in_new"></span></></a>
                                         </td>
 
                                         <td>
@@ -244,7 +244,7 @@ if ($value ['access_level'] !== "Registry" && $value ['access_level'] !== "Admin
                                             <form action="edit_student.php" method="post">
 
                                                 <input type="hidden" name="record_to_edit" value="<?php echo $record_to_edit; ?>" />
-                                                <input type="submit" name="edit" value="Edit" class="btn btn-primary btn-lg btn-block" />
+                                                <button type="submit" name="view" value="" class="btn btn-primary btn-lg btn-block"><span class="icon-mode_edit"></span></button>
 
                                             </form>
 
@@ -265,7 +265,7 @@ if ($value ['access_level'] !== "Registry" && $value ['access_level'] !== "Admin
                                                 <input type="hidden" name="program" value="<?php echo $rows ['program']; ?>" />
                                                 <input type="hidden" name="session" value="<?php echo $rows ['session']; ?>" />
                                                 <input type="hidden" name="filename" value="<?php echo $rows ['filename']; ?>" />
-                                                <input type="submit" name="delete" value="Remove" class="btn btn-primary btn-lg btn-block" />
+                                                <button type="submit" name="view" value="" class="btn btn-primary btn-lg btn-block"><span class="icon-delete"></span></button>
 
                                             </form>
 

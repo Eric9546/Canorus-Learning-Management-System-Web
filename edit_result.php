@@ -257,7 +257,7 @@
                         <form action="edit_result_student.php" method="post">
                     
                             <input type="hidden" name="record_to_view" value="<?php echo $rows ['id']; ?>" />
-                            <input type="submit" name="delete" value="View" class="btn btn-primary btn-lg btn-block"/>
+                            <button type="submit" name="view" value="" class="btn btn-primary btn-lg btn-block"><span class="icon-open_in_new"></span></button>
 
                         </form>
 

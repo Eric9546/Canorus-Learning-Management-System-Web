@@ -215,7 +215,7 @@
                         <form action="edit_staff.php" method="post">
 
                             <input type="hidden" name="record_to_edit" value="<?php echo $record_to_edit; ?>" />                           
-                            <input type="submit" name="edit" value="Edit" class="btn btn-primary btn-lg btn-block"/>
+                            <button type="submit" name="view" value="" class="btn btn-primary btn-lg btn-block"><span class="icon-mode_edit"></span></button>
 
                         </form>                   
 
@@ -234,7 +234,7 @@
                             <input type="hidden" name="record_to_remove" value="<?php echo $record_to_remove; ?>" />
                             <input type="hidden" name="newId" value="<?php echo $rows ['id']; ?>" />
                             <input type="hidden" name="access_level" value="<?php echo $rows ['access_level']; ?>" />
-                            <input type="submit" name="delete" value="Remove" class="btn btn-primary btn-lg btn-block"/>
+                            <button type="submit" name="view" value="" class="btn btn-primary btn-lg btn-block"><span class="icon-delete"></span></button>
 
                         </form>
 

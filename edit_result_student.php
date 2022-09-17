@@ -374,7 +374,7 @@
                             <input type="hidden" name="stuId" value="<?php echo $record_to_view; ?>" />
                             <input type="hidden" name="program" value="<?php echo $rows ['program']; ?>" />
                             <input type="hidden" name="subId" value="<?php echo $rows ['subId']; ?>" />
-                            <input type="submit" name="edit" value="Edit" class="btn btn-primary height-auto btn-sm"/>
+                            <button type="submit" name="view" value="" class="btn btn-primary height-auto btn-sm"><span class="icon-mode_edit"></span></button>
 
                         </form>
 
@@ -395,7 +395,7 @@
                             <input type="hidden" name="stuId" value="<?php echo $record_to_view; ?>" />
                             <input type="hidden" name="program" value="<?php echo $rows ['program']; ?>" />
                             <input type="hidden" name="subId" value="<?php echo $rows ['subId']; ?>" />
-                            <input type="submit" name="delete" value="X" class="btn btn-primary height-auto btn-sm"/>
+                            <button type="submit" name="view" value="" class="btn btn-primary height-auto btn-sm"><span class="icon-delete"></span></button>
 
                         </form>
 

@@ -195,7 +195,7 @@
                         <form action="edit_lecturer.php" method="post">
 
                             <input type="hidden" name="record_to_edit" value="<?php echo $record_to_edit; ?>" />                           
-                            <input type="submit" name="edit" value="Edit" class="btn btn-primary btn-lg btn-block"/>
+                            <button type="submit" name="view" value="" class="btn btn-primary btn-lg btn-block"><span class="icon-mode_edit"></span></button>
 
                         </form>
 

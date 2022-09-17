@@ -221,8 +221,7 @@
                     
                             <input type="hidden" name="contentName" value="<?php echo $rows ['contentName']; ?>" />
                             <input type="hidden" name="subId" value="<?php echo $subId; ?>" />
-                            <input type="submit" name="view" value="View" class="btn btn-primary btn-lg btn-block"/>
-
+                            <button type="submit" name="view" value="" class="btn btn-primary btn-lg btn-block"><span class="icon-open_in_new"></span></button>
                         </form>
 
                     </td>

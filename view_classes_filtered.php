@@ -265,7 +265,7 @@
                     
                             <input type="hidden" name="subId" value="<?php echo $rows ['subId']; ?>" />
                             <input type="hidden" name="program" value="<?php echo $rows ['program']; ?>" />
-                            <input type="submit" name="delete" value="View" class="btn btn-primary height-auto btn-sm"/>
+                            <button type="submit" name="view" value="" class="btn btn-primary btn-lg btn-block"><span class="icon-open_in_new"></span></button>
 
                         </form>
 

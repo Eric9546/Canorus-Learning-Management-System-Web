@@ -263,7 +263,7 @@
                     <td><?php echo $rows ['id']; ?></td>
                     <td>
                      
-                        <a href="<?php echo 'https://firebasestorage.googleapis.com/v0/b/canorus-18990.appspot.com/o/' . $rows ['fileName'] . '?alt=media&'; ?>" target="_blank" class="btn btn-primary btn-lg btn-block">View</></a>
+                        <a href="<?php echo 'https://firebasestorage.googleapis.com/v0/b/canorus-18990.appspot.com/o/' . $rows ['fileName'] . '?alt=media&'; ?>" target="_blank" class="btn btn-primary btn-lg btn-block"><span class="icon-open_in_new"></span></></a>
 
                     </td>
 
@@ -322,7 +322,7 @@
                             <input type="hidden" name="assignTitle" value="<?php echo $assignTitle; ?>" />
                             <input type="hidden" name="stuId" value="<?php echo $rows ['id']; ?>" />
                             <input type="hidden" name="fileName" value="<?php echo $rows ['fileName']; ?>" />
-                            <input type="submit" name="delete" value="Delete" class="btn btn-primary btn-lg btn-block"/>
+                            <button type="submit" name="view" value="" class="btn btn-primary btn-lg btn-block"><span class="icon-delete"></span></button>
 
                         </form>
 
