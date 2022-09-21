@@ -175,16 +175,95 @@
             </form>
           </div>
             
-          <div class="col-md-5 ml-auto">
+         
+        </div>
 
-            <div class="p-4 border mb-3">
-                      
-                <p><img src="images/function4.png" width="400" height="300"/></p>
+          <br /><br />
 
-            </div>
+          <div class="row">
+          <div class="col-md-12">
+            <h2 class="h3 mb-3 text-black">Add Manual Payment</h2>
+          </div>
+          <div class="col-md-7">
+
+            <form action="view_payment_manual_filtered.php" method="post">
+              
+              <div class="p-3 p-lg-5 border">
+                <div class="form-group row">
+
+                    <?php
+
+                        $path = 'Program/';
+                        $reference = $database->getReference($path)->getValue();
+
+                    ?>
+
+                  <div class="col-md-6">
+                    <label for="c_email" class="text-black">Program <span class="text-danger">*</span></label>
+                      <br />
+                        <select name="program" required>
+
+                            <?php
+
+                                foreach ($reference as $key => $rows)
+                                {
+                              
+                            ?>
                     
+                                <option value="<?php echo $rows ['progCode'] ?>"><?php echo $rows ['progCode']; ?></option>
+                                    
+                            <?php
+           
+                                }
+
+                        ?> 
+
+                        </select>
+                  </div>
+
+                    <?php
+
+                        $path = 'Session/';
+                        $reference = $database->getReference($path)->getValue();
+
+                    ?>
+
+                  <div class="col-md-6">
+                    <label for="c_email" class="text-black">Session <span class="text-danger">*</span></label>
+                      <br />
+                      <select name="session" required>
+
+                        <?php
+
+                            foreach ($reference as $key => $rows)
+                            {
+                              
+                        ?>
+                    
+                            <option value="<?php echo $rows ['session'] ?>"><?php echo $rows ['session']; ?></option>
+                                    
+                        <?php
+           
+                            }
+
+                        ?> 
+
+                        </select>
+                  </div>
+                </div>
+                
+                <div class="form-group row">
+                  <div class="col-lg-12">
+                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="View Students">
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+            
+         
         </div>
-        </div>
+
       </div>
     </div>
 
